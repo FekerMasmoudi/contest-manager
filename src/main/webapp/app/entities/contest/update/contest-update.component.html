@@ -1,0 +1,207 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-contest-heading" data-cy="ContestCreateUpdateHeading" jhiTranslate="contestmanagerdbApp.contest.home.createOrEditLabel">
+        Create or edit a Contest
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.code" for="field_code">Code</label>
+          <input type="number" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('code')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('code')?.errors?.number" jhiTranslate="entity.validation.number">
+              هذا الحقل يجب أن يكون رقم.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.rank" for="field_rank">Rank</label>
+          <input type="number" class="form-control" name="rank" id="field_rank" data-cy="rank" formControlName="rank" />
+          <div *ngIf="editForm.get('rank')!.invalid && (editForm.get('rank')!.dirty || editForm.get('rank')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('rank')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('rank')?.errors?.number" jhiTranslate="entity.validation.number">
+              هذا الحقل يجب أن يكون رقم.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.parent" for="field_parent">Parent</label>
+          <input type="text" class="form-control" name="parent" id="field_parent" data-cy="parent" formControlName="parent" />
+          <div *ngIf="editForm.get('parent')!.invalid && (editForm.get('parent')!.dirty || editForm.get('parent')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('parent')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.nbpositions" for="field_nbpositions">Nbpositions</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbpositions"
+            id="field_nbpositions"
+            data-cy="nbpositions"
+            formControlName="nbpositions"
+          />
+          <div *ngIf="editForm.get('nbpositions')!.invalid && (editForm.get('nbpositions')!.dirty || editForm.get('nbpositions')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nbpositions')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              هذا الحقل مطلوب.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('nbpositions')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              هذا الحقل يجب أن يكون رقم.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.status" for="field_status">Status</label>
+          <input type="checkbox" class="form-check" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.contestannounce" for="field_contestannounce"
+            >Contestannounce</label
+          >
+          <select
+            class="form-control"
+            id="field_contestannounce"
+            data-cy="contestannounce"
+            name="contestannounce"
+            formControlName="contestannounce"
+            [compareWith]="compareContestannounce"
+          >
+            <option *ngIf="!editForm.get('contestannounce')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="contestannounceOption" *ngFor="let contestannounceOption of contestannouncesSharedCollection">
+              {{ contestannounceOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['contestannounce'])!.invalid &&
+            (editForm.get(['contestannounce'])!.dirty || editForm.get(['contestannounce'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['contestannounce'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            هذا الحقل مطلوب.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.grade" for="field_grade">Grade</label>
+          <select class="form-control" id="field_grade" data-cy="grade" name="grade" formControlName="grade" [compareWith]="compareGrade">
+            <option *ngIf="!editForm.get('grade')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="gradeOption" *ngFor="let gradeOption of gradesSharedCollection">{{ gradeOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['grade'])!.invalid && (editForm.get(['grade'])!.dirty || editForm.get(['grade'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['grade'])?.errors?.required" jhiTranslate="entity.validation.required">
+            هذا الحقل مطلوب.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.speciality" for="field_speciality">Speciality</label>
+          <select
+            class="form-control"
+            id="field_speciality"
+            data-cy="speciality"
+            name="speciality"
+            formControlName="speciality"
+            [compareWith]="compareSpeciality"
+          >
+            <option *ngIf="!editForm.get('speciality')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="specialityOption" *ngFor="let specialityOption of specialitiesSharedCollection">
+              {{ specialityOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['speciality'])!.invalid && (editForm.get(['speciality'])!.dirty || editForm.get(['speciality'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['speciality'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            هذا الحقل مطلوب.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.sector" for="field_sector">Sector</label>
+          <select
+            class="form-control"
+            id="field_sector"
+            data-cy="sector"
+            name="sector"
+            formControlName="sector"
+            [compareWith]="compareSector"
+          >
+            <option *ngIf="!editForm.get('sector')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="sectorOption" *ngFor="let sectorOption of sectorsSharedCollection">{{ sectorOption.id }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['sector'])!.invalid && (editForm.get(['sector'])!.dirty || editForm.get(['sector'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['sector'])?.errors?.required" jhiTranslate="entity.validation.required">
+            هذا الحقل مطلوب.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">الغاء</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">حفظ</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

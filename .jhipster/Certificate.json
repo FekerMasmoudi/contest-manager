@@ -1,0 +1,21 @@
+{
+  "changelogDate": "20230601101032",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "rank",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Certificate",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

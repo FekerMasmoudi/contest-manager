@@ -1,0 +1,25 @@
+{
+  "contestmanagerdbApp": {
+    "contestform": {
+      "home": {
+        "title": "Contestforms",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contestform",
+        "createOrEditLabel": "Create or edit a Contestform",
+        "notFound": "No Contestforms found"
+      },
+      "created": "A new Contestform is created with identifier {{ param }}",
+      "updated": "A Contestform is updated with identifier {{ param }}",
+      "deleted": "A Contestform is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contestform {{ id }}?"
+      },
+      "detail": {
+        "title": "Contestform"
+      },
+      "id": "ID",
+      "contest": "Contest",
+      "user": "User"
+    }
+  }
+}

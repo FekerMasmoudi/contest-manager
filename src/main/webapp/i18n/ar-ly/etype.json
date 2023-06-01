@@ -1,0 +1,12 @@
+{
+  "contestmanagerdbApp": {
+    "etype": {
+      "null": "",
+      "STRING": "STRING",
+      "INT": "INT",
+      "DATE": "DATE",
+      "FLOAT": "FLOAT",
+      "FILE": "FILE"
+    }
+  }
+}

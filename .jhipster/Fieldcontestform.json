@@ -1,0 +1,42 @@
+{
+  "changelogDate": "20230601113836",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ftype",
+      "fieldType": "etype",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "STRING,INT,DATE,FLOAT,FILE"
+    },
+    {
+      "fieldName": "fvalue",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "frank",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fsize",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Fieldcontestform",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "contestform",
+      "relationshipName": "contestform",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    }
+  ],
+  "service": "serviceClass"
+}

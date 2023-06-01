@@ -1,0 +1,25 @@
+{
+  "contestmanagerdbApp": {
+    "educationlevel": {
+      "home": {
+        "title": "Educationlevels",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Educationlevel",
+        "createOrEditLabel": "Create or edit a Educationlevel",
+        "notFound": "No Educationlevels found"
+      },
+      "created": "A new Educationlevel is created with identifier {{ param }}",
+      "updated": "A Educationlevel is updated with identifier {{ param }}",
+      "deleted": "A Educationlevel is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Educationlevel {{ id }}?"
+      },
+      "detail": {
+        "title": "Educationlevel"
+      },
+      "id": "ID",
+      "rank": "Rank",
+      "designation": "Designation"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "contestmanagerdbApp": {
+    "fieldcontestform": {
+      "home": {
+        "title": "Fieldcontestforms",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Fieldcontestform",
+        "createOrEditLabel": "Create or edit a Fieldcontestform",
+        "notFound": "No Fieldcontestforms found"
+      },
+      "created": "A new Fieldcontestform is created with identifier {{ param }}",
+      "updated": "A Fieldcontestform is updated with identifier {{ param }}",
+      "deleted": "A Fieldcontestform is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fieldcontestform {{ id }}?"
+      },
+      "detail": {
+        "title": "Fieldcontestform"
+      },
+      "id": "ID",
+      "fname": "Fname",
+      "ftype": "Ftype",
+      "fvalue": "Fvalue",
+      "frank": "Frank",
+      "fsize": "Fsize",
+      "contestform": "Contestform"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="generalrules">
+      <h2 data-cy="generalrulesDetailsHeading"><span jhiTranslate="contestmanagerdbApp.generalrules.detail.title">Generalrules</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ generalrules.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.generalrules.designation">Designation</span></dt>
+        <dd>
+          <span>{{ generalrules.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.generalrules.effectdate">Effectdate</span></dt>
+        <dd>
+          <span>{{ generalrules.effectdate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">رجوع</span>
+      </button>
+
+      <button type="button" [routerLink]="['/generalrules', generalrules.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">تعديل</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="grade">
+      <h2 data-cy="gradeDetailsHeading"><span jhiTranslate="contestmanagerdbApp.grade.detail.title">Grade</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ grade.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.grade.code">Code</span></dt>
+        <dd>
+          <span>{{ grade.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.grade.designation">Designation</span></dt>
+        <dd>
+          <span>{{ grade.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.grade.certificate">Certificate</span></dt>
+        <dd>
+          <div *ngIf="grade.certificate">
+            <a [routerLink]="['/certificate', grade.certificate.id, 'view']">{{ grade.certificate.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.grade.educationlevel">Educationlevel</span></dt>
+        <dd>
+          <div *ngIf="grade.educationlevel">
+            <a [routerLink]="['/educationlevel', grade.educationlevel.id, 'view']">{{ grade.educationlevel.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">رجوع</span>
+      </button>
+
+      <button type="button" [routerLink]="['/grade', grade.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">تعديل</span>
+      </button>
+    </div>
+  </div>
+</div>

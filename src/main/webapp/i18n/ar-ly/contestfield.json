@@ -1,0 +1,33 @@
+{
+  "contestmanagerdbApp": {
+    "contestfield": {
+      "home": {
+        "title": "Contestfields",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contestfield",
+        "createOrEditLabel": "Create or edit a Contestfield",
+        "notFound": "No Contestfields found"
+      },
+      "created": "A new Contestfield is created with identifier {{ param }}",
+      "updated": "A Contestfield is updated with identifier {{ param }}",
+      "deleted": "A Contestfield is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contestfield {{ id }}?"
+      },
+      "detail": {
+        "title": "Contestfield"
+      },
+      "id": "ID",
+      "mandatory": "Mandatory",
+      "reference": "Reference",
+      "ctype": "Ctype",
+      "cname": "Cname",
+      "logic": "Logic",
+      "fopconstraint": "Fopconstraint",
+      "fvalue": "Fvalue",
+      "sopconstraint": "Sopconstraint",
+      "svalue": "Svalue",
+      "contest": "Contest"
+    }
+  }
+}

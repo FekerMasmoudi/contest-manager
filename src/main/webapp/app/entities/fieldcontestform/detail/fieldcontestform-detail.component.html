@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fieldcontestform">
+      <h2 data-cy="fieldcontestformDetailsHeading">
+        <span jhiTranslate="contestmanagerdbApp.fieldcontestform.detail.title">Fieldcontestform</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ fieldcontestform.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.fieldcontestform.fname">Fname</span></dt>
+        <dd>
+          <span>{{ fieldcontestform.fname }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.fieldcontestform.ftype">Ftype</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'contestmanagerdbApp.etype.' + fieldcontestform.ftype }}">{{ fieldcontestform.ftype }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.fieldcontestform.fvalue">Fvalue</span></dt>
+        <dd>
+          <span>{{ fieldcontestform.fvalue }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.fieldcontestform.frank">Frank</span></dt>
+        <dd>
+          <span>{{ fieldcontestform.frank }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.fieldcontestform.fsize">Fsize</span></dt>
+        <dd>
+          <span>{{ fieldcontestform.fsize }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.fieldcontestform.contestform">Contestform</span></dt>
+        <dd>
+          <div *ngIf="fieldcontestform.contestform">
+            <a [routerLink]="['/contestform', fieldcontestform.contestform.id, 'view']">{{ fieldcontestform.contestform.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">رجوع</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fieldcontestform', fieldcontestform.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">تعديل</span>
+      </button>
+    </div>
+  </div>
+</div>

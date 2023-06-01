@@ -1,0 +1,28 @@
+{
+  "contestmanagerdbApp": {
+    "contestannounce": {
+      "home": {
+        "title": "Contestannounces",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contestannounce",
+        "createOrEditLabel": "Create or edit a Contestannounce",
+        "notFound": "No Contestannounces found"
+      },
+      "created": "A new Contestannounce is created with identifier {{ param }}",
+      "updated": "A Contestannounce is updated with identifier {{ param }}",
+      "deleted": "A Contestannounce is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contestannounce {{ id }}?"
+      },
+      "detail": {
+        "title": "Contestannounce"
+      },
+      "id": "ID",
+      "announceText": "Announce Text",
+      "startdate": "Startdate",
+      "limitdate": "Limitdate",
+      "status": "Status",
+      "generalrules": "Generalrules"
+    }
+  }
+}

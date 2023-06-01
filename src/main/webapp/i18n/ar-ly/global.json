@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "الكيانات",
+        "generalrules": "Generalrules",
+        "contestannounce": "Contestannounce",
+        "sector": "Sector",
+        "speciality": "Speciality",
+        "educationlevel": "Educationlevel",
+        "certificate": "Certificate",
+        "grade": "Grade",
+        "contest": "Contest",
+        "contestfield": "Contestfield",
+        "contestform": "Contestform",
+        "fieldcontestform": "Fieldcontestform",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contestfield">
+      <h2 data-cy="contestfieldDetailsHeading"><span jhiTranslate="contestmanagerdbApp.contestfield.detail.title">Contestfield</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contestfield.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.mandatory">Mandatory</span></dt>
+        <dd>
+          <span>{{ contestfield.mandatory }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.reference">Reference</span></dt>
+        <dd>
+          <span>{{ contestfield.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.ctype">Ctype</span></dt>
+        <dd>
+          <span>{{ contestfield.ctype }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.cname">Cname</span></dt>
+        <dd>
+          <span>{{ contestfield.cname }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.logic">Logic</span></dt>
+        <dd>
+          <span>{{ contestfield.logic }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.fopconstraint">Fopconstraint</span></dt>
+        <dd>
+          <span>{{ contestfield.fopconstraint }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.fvalue">Fvalue</span></dt>
+        <dd>
+          <span>{{ contestfield.fvalue }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.sopconstraint">Sopconstraint</span></dt>
+        <dd>
+          <span>{{ contestfield.sopconstraint }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.svalue">Svalue</span></dt>
+        <dd>
+          <span>{{ contestfield.svalue }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestfield.contest">Contest</span></dt>
+        <dd>
+          <div *ngIf="contestfield.contest">
+            <a [routerLink]="['/contest', contestfield.contest.id, 'view']">{{ contestfield.contest.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">رجوع</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contestfield', contestfield.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">تعديل</span>
+      </button>
+    </div>
+  </div>
+</div>

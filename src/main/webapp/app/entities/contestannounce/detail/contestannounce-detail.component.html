@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contestannounce">
+      <h2 data-cy="contestannounceDetailsHeading">
+        <span jhiTranslate="contestmanagerdbApp.contestannounce.detail.title">Contestannounce</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contestannounce.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestannounce.announceText">Announce Text</span></dt>
+        <dd>
+          <span>{{ contestannounce.announceText }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestannounce.startdate">Startdate</span></dt>
+        <dd>
+          <span>{{ contestannounce.startdate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestannounce.limitdate">Limitdate</span></dt>
+        <dd>
+          <span>{{ contestannounce.limitdate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestannounce.status">Status</span></dt>
+        <dd>
+          <span>{{ contestannounce.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="contestmanagerdbApp.contestannounce.generalrules">Generalrules</span></dt>
+        <dd>
+          <span *ngFor="let generalrules of contestannounce.generalrules; let last = last">
+            <a [routerLink]="['/generalrules', generalrules.id, 'view']">{{ generalrules.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">رجوع</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contestannounce', contestannounce.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">تعديل</span>
+      </button>
+    </div>
+  </div>
+</div>

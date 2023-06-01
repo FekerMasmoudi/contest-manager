@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-fieldcontestform-heading"
+        data-cy="FieldcontestformCreateUpdateHeading"
+        jhiTranslate="contestmanagerdbApp.fieldcontestform.home.createOrEditLabel"
+      >
+        Create or edit a Fieldcontestform
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.fname" for="field_fname">Fname</label>
+          <input type="text" class="form-control" name="fname" id="field_fname" data-cy="fname" formControlName="fname" />
+          <div *ngIf="editForm.get('fname')!.invalid && (editForm.get('fname')!.dirty || editForm.get('fname')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('fname')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.ftype" for="field_ftype">Ftype</label>
+          <select class="form-control" name="ftype" formControlName="ftype" id="field_ftype" data-cy="ftype">
+            <option [ngValue]="null">{{ 'contestmanagerdbApp.etype.null' | translate }}</option>
+            <option *ngFor="let etype of etypeValues" [value]="etype">{{ 'contestmanagerdbApp.etype.' + etype | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('ftype')!.invalid && (editForm.get('ftype')!.dirty || editForm.get('ftype')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ftype')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.fvalue" for="field_fvalue">Fvalue</label>
+          <input type="text" class="form-control" name="fvalue" id="field_fvalue" data-cy="fvalue" formControlName="fvalue" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.frank" for="field_frank">Frank</label>
+          <input type="number" class="form-control" name="frank" id="field_frank" data-cy="frank" formControlName="frank" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.fsize" for="field_fsize">Fsize</label>
+          <input type="number" class="form-control" name="fsize" id="field_fsize" data-cy="fsize" formControlName="fsize" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.contestform" for="field_contestform"
+            >Contestform</label
+          >
+          <select
+            class="form-control"
+            id="field_contestform"
+            data-cy="contestform"
+            name="contestform"
+            formControlName="contestform"
+            [compareWith]="compareContestform"
+          >
+            <option *ngIf="!editForm.get('contestform')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="contestformOption" *ngFor="let contestformOption of contestformsSharedCollection">
+              {{ contestformOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['contestform'])!.invalid && (editForm.get(['contestform'])!.dirty || editForm.get(['contestform'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['contestform'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            هذا الحقل مطلوب.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">الغاء</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">حفظ</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
