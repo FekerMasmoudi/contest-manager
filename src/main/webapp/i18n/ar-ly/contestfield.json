@@ -2,32 +2,32 @@
   "contestmanagerdbApp": {
     "contestfield": {
       "home": {
-        "title": "Contestfields",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Contestfield",
-        "createOrEditLabel": "Create or edit a Contestfield",
-        "notFound": "No Contestfields found"
+        "title": "حقــول المنــاظـرة",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء حقــول منــاظـرة جــديدة",
+        "createOrEditLabel": "إنشــاء أو تحييـن حقــول المنــاظـرة",
+        "notFound": "لايـوجد أي حقــول منــاظـرة"
       },
-      "created": "A new Contestfield is created with identifier {{ param }}",
-      "updated": "A Contestfield is updated with identifier {{ param }}",
-      "deleted": "A Contestfield is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة حقــول منــاظـرة جــديـدة بنجــاح تحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين حقــول المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف حقــول المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Contestfield {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف حقــول المنــاظـرة صـاحب المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Contestfield"
+        "title": "حقــول المنــاظـرة"
       },
-      "id": "ID",
-      "mandatory": "Mandatory",
-      "reference": "Reference",
-      "ctype": "Ctype",
-      "cname": "Cname",
-      "logic": "Logic",
-      "fopconstraint": "Fopconstraint",
-      "fvalue": "Fvalue",
-      "sopconstraint": "Sopconstraint",
-      "svalue": "Svalue",
-      "contest": "Contest"
+      "id": "المعــرّف",
+      "mandatory": "إجبــاري",
+      "reference": "المرجـع",
+      "ctype": "النوع",
+      "cname": "الإسـم",
+      "logic": "حــروف الرّبـط ( مثـال : &&/||...)",
+      "fopconstraint": "قيد العملية الأول",
+      "fvalue": "القيمة الأولى",
+      "sopconstraint": "قيد العملية الثـانـي",
+      "svalue": "القيمة الثـانيـة",
+      "contest": "المنــاظـرة"
     }
   }
 }

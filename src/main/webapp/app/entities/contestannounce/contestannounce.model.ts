@@ -7,7 +7,7 @@ export interface IContestannounce {
   startdate?: dayjs.Dayjs | null;
   limitdate?: dayjs.Dayjs | null;
   status?: boolean | null;
-  generalrules?: Pick<IGeneralrules, 'id'>[] | null;
+  generalrules?: Pick<IGeneralrules, 'id' | 'designation'>[] | null;
 }
 
 export type NewContestannounce = Omit<IContestannounce, 'id'> & { id: null };

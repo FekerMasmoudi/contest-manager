@@ -5,8 +5,8 @@ export interface IGrade {
   id: string;
   code?: number | null;
   designation?: string | null;
-  certificate?: Pick<ICertificate, 'id'> | null;
-  educationlevel?: Pick<IEducationlevel, 'id'> | null;
+  certificate?: Pick<ICertificate, 'id' | 'designation'> | null;
+  educationlevel?: Pick<IEducationlevel, 'id' | 'designation'> | null;
 }
 
 export type NewGrade = Omit<IGrade, 'id'> & { id: null };

@@ -33,7 +33,7 @@
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
           <th scope="col" jhiSortBy="id">
-            <div class="d-flex">
+            <div class="d-flex" hidden>
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
@@ -55,12 +55,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let contestform of contestforms; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <td hidden>
             <a [routerLink]="['/contestform', contestform.id, 'view']">{{ contestform.id }}</a>
           </td>
           <td>
             <div *ngIf="contestform.contest">
-              <a [routerLink]="['/contest', contestform.contest.id, 'view']">{{ contestform.contest.id }}</a>
+              <a [routerLink]="['/contest', contestform.contest.id, 'view']">{{ contestform.contest.name }}</a>
             </div>
           </td>
           <td>

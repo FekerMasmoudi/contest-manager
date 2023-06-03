@@ -1,15 +1,23 @@
 package tn.soretras.contestmanager.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.soretras.contestmanager.domain.Contestannounce;
+import tn.soretras.contestmanager.domain.Generalrules;
 import tn.soretras.contestmanager.repository.ContestannounceRepository;
+import tn.soretras.contestmanager.repository.GeneralrulesRepository;
 import tn.soretras.contestmanager.service.dto.ContestannounceDTO;
+import tn.soretras.contestmanager.service.dto.GeneralrulesDTO;
 import tn.soretras.contestmanager.service.mapper.ContestannounceMapper;
+import tn.soretras.contestmanager.service.mapper.GeneralrulesMapper;
 
 /**
  * Service Implementation for managing {@link Contestannounce}.
@@ -23,9 +31,21 @@ public class ContestannounceService {
 
     private final ContestannounceMapper contestannounceMapper;
 
-    public ContestannounceService(ContestannounceRepository contestannounceRepository, ContestannounceMapper contestannounceMapper) {
+    private final GeneralrulesRepository generalrulesRepository;
+
+    private final GeneralrulesMapper generalrulesMapper;
+
+    public ContestannounceService(
+        ContestannounceRepository contestannounceRepository,
+        ContestannounceMapper contestannounceMapper,
+        GeneralrulesRepository generalrulesRepository,
+        GeneralrulesMapper generalrulesMapper
+    ) {
         this.contestannounceRepository = contestannounceRepository;
         this.contestannounceMapper = contestannounceMapper;
+
+        this.generalrulesRepository = generalrulesRepository;
+        this.generalrulesMapper = generalrulesMapper;
     }
 
     /**
@@ -80,9 +100,30 @@ public class ContestannounceService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
+
+    @SuppressWarnings("unchecked")
     public Page<ContestannounceDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Contestannounces");
-        return contestannounceRepository.findAll(pageable).map(contestannounceMapper::toDto);
+        //return contestannounceRepository.findAll(pageable).map(contestannounceMapper::toDto);
+
+        //Modified By Mohamed
+        Page<ContestannounceDTO> pcontanndto = contestannounceRepository.findAll(pageable).map(contestannounceMapper::toDto);
+        List<ContestannounceDTO> contestannounceList = new ArrayList<>();
+        if (pcontanndto != null && pcontanndto.hasContent()) {
+            contestannounceList = pcontanndto.getContent();
+            for (int i = 0; i < contestannounceList.size(); i++) { //for designation generalrules
+                String idcontann_generules = ((Contestannounce) contestannounceList.get(i).getGeneralrules()).getId();
+                GeneralrulesDTO generulesdto = generalrulesRepository
+                    .findById(idcontann_generules)
+                    .map(generalrulesMapper::toDto)
+                    .orElse(null);
+                contestannounceList.get(i).setGeneralrules((Set<GeneralrulesDTO>) generulesdto);
+            }
+            Long total = (long) contestannounceList.size();
+            @SuppressWarnings("unused")
+            Page<ContestannounceDTO> pages = new PageImpl<ContestannounceDTO>(contestannounceList, pageable, total);
+        }
+        return pcontanndto;
     }
 
     /**

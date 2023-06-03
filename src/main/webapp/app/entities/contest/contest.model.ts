@@ -11,10 +11,10 @@ export interface IContest {
   parent?: string | null;
   nbpositions?: number | null;
   status?: boolean | null;
-  contestannounce?: Pick<IContestannounce, 'id'> | null;
-  grade?: Pick<IGrade, 'id'> | null;
-  speciality?: Pick<ISpeciality, 'id'> | null;
-  sector?: Pick<ISector, 'id'> | null;
+  contestannounce?: Pick<IContestannounce, 'id' | 'announceText'> | null;
+  grade?: Pick<IGrade, 'id' | 'designation'> | null;
+  speciality?: Pick<ISpeciality, 'id' | 'designation'> | null;
+  sector?: Pick<ISector, 'id' | 'designation'> | null;
 }
 
 export type NewContest = Omit<IContest, 'id'> & { id: null };

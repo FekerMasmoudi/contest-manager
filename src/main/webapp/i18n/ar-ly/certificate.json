@@ -2,24 +2,24 @@
   "contestmanagerdbApp": {
     "certificate": {
       "home": {
-        "title": "Certificates",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Certificate",
-        "createOrEditLabel": "Create or edit a Certificate",
-        "notFound": "No Certificates found"
+        "title": "الشّهــادات",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء شــهادة جــديدة",
+        "createOrEditLabel": "إنشــاء أو تحييـن الشّهــادة",
+        "notFound": "لايـوجد أي شــهادة"
       },
-      "created": "A new Certificate is created with identifier {{ param }}",
-      "updated": "A Certificate is updated with identifier {{ param }}",
-      "deleted": "A Certificate is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة شــهادة جــديـدة بنجــاح تحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين الشّهــادة بنجــاح تحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف الشّهــادة بنجــاح تحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Certificate {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف الشّهــادة صـاحبة المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Certificate"
+        "title": "الشّهــادات"
       },
-      "id": "ID",
-      "rank": "Rank",
-      "designation": "Designation"
+      "id": "المعــرّف",
+      "rank": "العدد الرّتبي",
+      "designation": "التّسميــة"
     }
   }
 }

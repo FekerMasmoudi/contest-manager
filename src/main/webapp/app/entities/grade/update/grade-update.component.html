@@ -4,18 +4,27 @@
       <h2 id="jhi-grade-heading" data-cy="GradeCreateUpdateHeading" jhiTranslate="contestmanagerdbApp.grade.home.createOrEditLabel">
         Create or edit a Grade
       </h2>
-
+      <hr />
+      <br />
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null" hidden>
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.grade.code" for="field_code">Code</label>
-          <input type="number" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <input
+            type="number"
+            class="form-control"
+            name="code"
+            id="field_code"
+            data-cy="code"
+            formControlName="code"
+            style="direction: rtl"
+          />
           <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('code')?.errors?.required" jhiTranslate="entity.validation.required">
               هذا الحقل مطلوب.
@@ -50,16 +59,16 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.grade.certificate" for="field_certificate">Certificate</label>
           <select
-            class="form-control"
+            class="form-select"
             id="field_certificate"
             data-cy="certificate"
             name="certificate"
             formControlName="certificate"
             [compareWith]="compareCertificate"
           >
-            <option *ngIf="!editForm.get('certificate')!.value" [ngValue]="null" selected></option>
+            <option *ngIf="!editForm.get('certificate')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار الشّهـادة --</option>
             <option [ngValue]="certificateOption" *ngFor="let certificateOption of certificatesSharedCollection">
-              {{ certificateOption.id }}
+              {{ certificateOption.designation }}
             </option>
           </select>
         </div>
@@ -80,16 +89,18 @@
             >Educationlevel</label
           >
           <select
-            class="form-control"
+            class="form-select"
             id="field_educationlevel"
             data-cy="educationlevel"
             name="educationlevel"
             formControlName="educationlevel"
             [compareWith]="compareEducationlevel"
           >
-            <option *ngIf="!editForm.get('educationlevel')!.value" [ngValue]="null" selected></option>
+            <option *ngIf="!editForm.get('educationlevel')!.value" [ngValue]="null" selected>
+              -- الرّجـاء إختيـار المستــوى التعليمــي --
+            </option>
             <option [ngValue]="educationlevelOption" *ngFor="let educationlevelOption of educationlevelsSharedCollection">
-              {{ educationlevelOption.id }}
+              {{ educationlevelOption.designation }}
             </option>
           </select>
         </div>

@@ -2,24 +2,24 @@
   "contestmanagerdbApp": {
     "sector": {
       "home": {
-        "title": "Sectors",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Sector",
-        "createOrEditLabel": "Create or edit a Sector",
-        "notFound": "No Sectors found"
+        "title": "المســلك",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء مســلك جــديد",
+        "createOrEditLabel": "إنشــاء أو تحييـن المســلك",
+        "notFound": "لايـوجد أي مســلك"
       },
-      "created": "A new Sector is created with identifier {{ param }}",
-      "updated": "A Sector is updated with identifier {{ param }}",
-      "deleted": "A Sector is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة مســلك جــديـد بنجــاح يحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين المســلك بنجــاح يحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف المســلك بنجــاح يحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Sector {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف الشرط العام صـاحب المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Sector"
+        "title": "المســلك"
       },
-      "id": "ID",
-      "rank": "Rank",
-      "designation": "Designation"
+      "id": "المعــرّف",
+      "rank": "العدد الرّتبي",
+      "designation": "التّسميــة"
     }
   }
 }

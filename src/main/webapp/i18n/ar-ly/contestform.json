@@ -2,24 +2,24 @@
   "contestmanagerdbApp": {
     "contestform": {
       "home": {
-        "title": "Contestforms",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Contestform",
-        "createOrEditLabel": "Create or edit a Contestform",
-        "notFound": "No Contestforms found"
+        "title": "إستمــارة المنــاظـرة",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء إستمــارة منــاظـرة جــديدة",
+        "createOrEditLabel": "إنشــاء أو تحييـن إستمــارة المنــاظـرة",
+        "notFound": "لايـوجد أي إستمــارة منــاظـرة"
       },
-      "created": "A new Contestform is created with identifier {{ param }}",
-      "updated": "A Contestform is updated with identifier {{ param }}",
-      "deleted": "A Contestform is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة إستمــارة منــاظـرة جــديـدة بنجــاح تحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين إستمــارة المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف إستمــارة المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Contestform {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف إستمــارة المنــاظـرة صـاحبة المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Contestform"
+        "title": "إستمــارة المنــاظـرة"
       },
-      "id": "ID",
-      "contest": "Contest",
-      "user": "User"
+      "id": "المعــرّف",
+      "contest": "المنــاظـرة",
+      "user": "المستخــدم"
     }
   }
 }

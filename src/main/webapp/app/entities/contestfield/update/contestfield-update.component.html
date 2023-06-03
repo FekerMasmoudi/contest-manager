@@ -8,18 +8,36 @@
       >
         Create or edit a Contestfield
       </h2>
-
+      <hr />
+      <br />
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null" hidden>
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
+        <!-- ******** Modified By Mohamed ********* -->
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.mandatory" for="field_mandatory">Mandatory</label>
-          <input type="checkbox" class="form-check" name="mandatory" id="field_mandatory" data-cy="mandatory" formControlName="mandatory" />
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.cname" for="field_cname">Cname</label>
+          <input type="text" class="form-control" name="cname" id="field_cname" data-cy="cname" formControlName="cname" />
+          <div *ngIf="editForm.get('cname')!.invalid && (editForm.get('cname')!.dirty || editForm.get('cname')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('cname')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+          </div>
+        </div>
+
+        <!-- ******** Modified By Mohamed ********* -->
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.ctype" for="field_ctype">Ctype</label>
+          <input type="text" class="form-control" name="ctype" id="field_ctype" data-cy="ctype" formControlName="ctype" />
+          <div *ngIf="editForm.get('ctype')!.invalid && (editForm.get('ctype')!.dirty || editForm.get('ctype')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ctype')?.errors?.required" jhiTranslate="entity.validation.required">
+              هذا الحقل مطلوب.
+            </small>
+          </div>
         </div>
 
         <div class="row mb-3">
@@ -125,7 +143,7 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.contest" for="field_contest">Contest</label>
           <select
-            class="form-control"
+            class="form-select"
             id="field_contest"
             data-cy="contest"
             name="contest"
@@ -133,9 +151,16 @@
             [compareWith]="compareContest"
           >
             <option *ngIf="!editForm.get('contest')!.value" [ngValue]="null" selected></option>
-            <option [ngValue]="contestOption" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.id }}</option>
+            <option [ngValue]="contestOption" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.name }}</option>
           </select>
         </div>
+
+        <!-- ******** Modified By Mohamed ********* -->
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.mandatory" for="field_mandatory">Mandatory</label>
+          <input type="checkbox" class="form-check" name="mandatory" id="field_mandatory" data-cy="mandatory" formControlName="mandatory" />
+        </div>
+
         <div *ngIf="editForm.get(['contest'])!.invalid && (editForm.get(['contest'])!.dirty || editForm.get(['contest'])!.touched)">
           <small
             class="form-text text-danger"

@@ -10,8 +10,8 @@
       <jhi-alert></jhi-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
-        <dd>
+        <dt hidden><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd hidden>
           <span>{{ contest.id }}</span>
         </dd>
         <dt><span jhiTranslate="contestmanagerdbApp.contest.code">Code</span></dt>
@@ -41,25 +41,25 @@
         <dt><span jhiTranslate="contestmanagerdbApp.contest.contestannounce">Contestannounce</span></dt>
         <dd>
           <div *ngIf="contest.contestannounce">
-            <a [routerLink]="['/contestannounce', contest.contestannounce.id, 'view']">{{ contest.contestannounce.id }}</a>
+            <a [routerLink]="['/contestannounce', contest.contestannounce.id, 'view']">{{ contest.contestannounce.announceText }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="contestmanagerdbApp.contest.grade">Grade</span></dt>
         <dd>
           <div *ngIf="contest.grade">
-            <a [routerLink]="['/grade', contest.grade.id, 'view']">{{ contest.grade.id }}</a>
+            <a [routerLink]="['/grade', contest.grade.id, 'view']">{{ contest.grade.designation }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="contestmanagerdbApp.contest.speciality">Speciality</span></dt>
         <dd>
           <div *ngIf="contest.speciality">
-            <a [routerLink]="['/speciality', contest.speciality.id, 'view']">{{ contest.speciality.id }}</a>
+            <a [routerLink]="['/speciality', contest.speciality.id, 'view']">{{ contest.speciality.designation }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="contestmanagerdbApp.contest.sector">Sector</span></dt>
         <dd>
           <div *ngIf="contest.sector">
-            <a [routerLink]="['/sector', contest.sector.id, 'view']">{{ contest.sector.id }}</a>
+            <a [routerLink]="['/sector', contest.sector.id, 'view']">{{ contest.sector.designation }}</a>
           </div>
         </dd>
       </dl>

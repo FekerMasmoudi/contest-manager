@@ -4,18 +4,27 @@
       <h2 id="jhi-contest-heading" data-cy="ContestCreateUpdateHeading" jhiTranslate="contestmanagerdbApp.contest.home.createOrEditLabel">
         Create or edit a Contest
       </h2>
-
+      <hr />
+      <br />
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null" hidden>
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.code" for="field_code">Code</label>
-          <input type="number" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <input
+            type="number"
+            class="form-control"
+            name="code"
+            id="field_code"
+            data-cy="code"
+            formControlName="code"
+            style="direction: rtl"
+          />
           <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('code')?.errors?.required" jhiTranslate="entity.validation.required">
               هذا الحقل مطلوب.
@@ -28,7 +37,15 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.rank" for="field_rank">Rank</label>
-          <input type="number" class="form-control" name="rank" id="field_rank" data-cy="rank" formControlName="rank" />
+          <input
+            type="number"
+            class="form-control"
+            name="rank"
+            id="field_rank"
+            data-cy="rank"
+            formControlName="rank"
+            style="direction: rtl"
+          />
           <div *ngIf="editForm.get('rank')!.invalid && (editForm.get('rank')!.dirty || editForm.get('rank')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('rank')?.errors?.required" jhiTranslate="entity.validation.required">
               هذا الحقل مطلوب.
@@ -68,6 +85,7 @@
             id="field_nbpositions"
             data-cy="nbpositions"
             formControlName="nbpositions"
+            style="direction: rtl"
           />
           <div *ngIf="editForm.get('nbpositions')!.invalid && (editForm.get('nbpositions')!.dirty || editForm.get('nbpositions')!.touched)">
             <small
@@ -97,16 +115,18 @@
             >Contestannounce</label
           >
           <select
-            class="form-control"
+            class="form-select"
             id="field_contestannounce"
             data-cy="contestannounce"
             name="contestannounce"
             formControlName="contestannounce"
             [compareWith]="compareContestannounce"
           >
-            <option *ngIf="!editForm.get('contestannounce')!.value" [ngValue]="null" selected></option>
+            <option *ngIf="!editForm.get('contestannounce')!.value" [ngValue]="null" selected>
+              -- الرّجـاء إختيـار إعــلان المنــاظرة --
+            </option>
             <option [ngValue]="contestannounceOption" *ngFor="let contestannounceOption of contestannouncesSharedCollection">
-              {{ contestannounceOption.id }}
+              {{ contestannounceOption.announceText }}
             </option>
           </select>
         </div>
@@ -127,9 +147,9 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.grade" for="field_grade">Grade</label>
-          <select class="form-control" id="field_grade" data-cy="grade" name="grade" formControlName="grade" [compareWith]="compareGrade">
-            <option *ngIf="!editForm.get('grade')!.value" [ngValue]="null" selected></option>
-            <option [ngValue]="gradeOption" *ngFor="let gradeOption of gradesSharedCollection">{{ gradeOption.id }}</option>
+          <select class="form-select" id="field_grade" data-cy="grade" name="grade" formControlName="grade" [compareWith]="compareGrade">
+            <option *ngIf="!editForm.get('grade')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار الرتبــة --</option>
+            <option [ngValue]="gradeOption" *ngFor="let gradeOption of gradesSharedCollection">{{ gradeOption.designation }}</option>
           </select>
         </div>
         <div *ngIf="editForm.get(['grade'])!.invalid && (editForm.get(['grade'])!.dirty || editForm.get(['grade'])!.touched)">
@@ -141,16 +161,16 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.speciality" for="field_speciality">Speciality</label>
           <select
-            class="form-control"
+            class="form-select"
             id="field_speciality"
             data-cy="speciality"
             name="speciality"
             formControlName="speciality"
             [compareWith]="compareSpeciality"
           >
-            <option *ngIf="!editForm.get('speciality')!.value" [ngValue]="null" selected></option>
+            <option *ngIf="!editForm.get('speciality')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار الإختصــاص --</option>
             <option [ngValue]="specialityOption" *ngFor="let specialityOption of specialitiesSharedCollection">
-              {{ specialityOption.id }}
+              {{ specialityOption.designation }}
             </option>
           </select>
         </div>
@@ -169,15 +189,15 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contest.sector" for="field_sector">Sector</label>
           <select
-            class="form-control"
+            class="form-select"
             id="field_sector"
             data-cy="sector"
             name="sector"
             formControlName="sector"
             [compareWith]="compareSector"
           >
-            <option *ngIf="!editForm.get('sector')!.value" [ngValue]="null" selected></option>
-            <option [ngValue]="sectorOption" *ngFor="let sectorOption of sectorsSharedCollection">{{ sectorOption.id }}</option>
+            <option *ngIf="!editForm.get('sector')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار المســلك --</option>
+            <option [ngValue]="sectorOption" *ngFor="let sectorOption of sectorsSharedCollection">{{ sectorOption.designation }}</option>
           </select>
         </div>
         <div *ngIf="editForm.get(['sector'])!.invalid && (editForm.get(['sector'])!.dirty || editForm.get(['sector'])!.touched)">

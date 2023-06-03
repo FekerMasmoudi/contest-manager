@@ -3,7 +3,7 @@ import { IUser } from 'app/entities/user/user.model';
 
 export interface IContestform {
   id: string;
-  contest?: Pick<IContest, 'id'> | null;
+  contest?: Pick<IContest, 'id' | 'name'> | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
 }
 
