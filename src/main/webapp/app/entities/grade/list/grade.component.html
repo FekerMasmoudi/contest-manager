@@ -32,7 +32,7 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="id" hidden>
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -67,19 +67,19 @@
       </thead>
       <tbody>
         <tr *ngFor="let grade of grades; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <td hidden>
             <a [routerLink]="['/grade', grade.id, 'view']">{{ grade.id }}</a>
           </td>
           <td>{{ grade.code }}</td>
           <td>{{ grade.designation }}</td>
           <td>
             <div *ngIf="grade.certificate">
-              <a [routerLink]="['/certificate', grade.certificate.id, 'view']">{{ grade.certificate.id }}</a>
+              <a [routerLink]="['/certificate', grade.certificate.designation, 'view']">{{ grade.certificate.designation }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="grade.educationlevel">
-              <a [routerLink]="['/educationlevel', grade.educationlevel.id, 'view']">{{ grade.educationlevel.id }}</a>
+              <a [routerLink]="['/educationlevel', grade.educationlevel.designation, 'view']">{{ grade.educationlevel.designation }}</a>
             </div>
           </td>
           <td class="text-end">

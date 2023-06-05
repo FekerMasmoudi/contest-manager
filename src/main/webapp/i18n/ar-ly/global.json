@@ -1,23 +1,23 @@
 {
   "global": {
-    "title": "Contestmanagerdb",
+    "title": "الشّركــة الجهويّــة للنقـل بولايــة صفـاقس",
     "browsehappy": "أنت تستخدم متصفح <strong>قديم</strong> . من فضلك <a href=\"http://browsehappy.com/?locale=en\">قم بتحديث متصفحك</a> لتحسين تجربتك.",
     "menu": {
       "home": "الصفحة الرئيسية",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "الكيانات",
-        "generalrules": "Generalrules",
-        "contestannounce": "Contestannounce",
-        "sector": "Sector",
-        "speciality": "Speciality",
-        "educationlevel": "Educationlevel",
-        "certificate": "Certificate",
-        "grade": "Grade",
-        "contest": "Contest",
-        "contestfield": "Contestfield",
-        "contestform": "Contestform",
-        "fieldcontestform": "Fieldcontestform",
+        "generalrules": "الشــروط العــامـــــة",
+        "contestannounce": "إعــلان المنــــاظارات",
+        "sector": "المســـلك",
+        "speciality": "الاختصـــاص",
+        "educationlevel": "المستــوى التعليمــي",
+        "certificate": "الشّهــادة",
+        "grade": "الرتبــة",
+        "contest": "المنــاظـــرات",
+        "contestfield": "حقــول المنــاظـرة",
+        "contestform": "إستمــارة المنــاظـرة",
+        "fieldcontestform": "حقــول إستمــارة المنــاظـرة",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -91,7 +91,7 @@
       }
     },
     "field": {
-      "id": "ID"
+      "id": "المعــرّف"
     },
     "ribbon": {
       "dev": "تطوير"

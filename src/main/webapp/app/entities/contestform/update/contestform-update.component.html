@@ -8,11 +8,12 @@
       >
         Create or edit a Contestform
       </h2>
-
+      <hr />
+      <br />
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null" hidden>
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
@@ -27,8 +28,8 @@
             formControlName="contest"
             [compareWith]="compareContest"
           >
-            <option *ngIf="!editForm.get('contest')!.value" [ngValue]="null" selected></option>
-            <option [ngValue]="contestOption" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.id }}</option>
+            <option *ngIf="!editForm.get('contest')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار المنــاظرة --</option>
+            <option [ngValue]="contestOption" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.name }}</option>
           </select>
         </div>
         <div *ngIf="editForm.get(['contest'])!.invalid && (editForm.get(['contest'])!.dirty || editForm.get(['contest'])!.touched)">

@@ -2,28 +2,28 @@
   "contestmanagerdbApp": {
     "fieldcontestform": {
       "home": {
-        "title": "Fieldcontestforms",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Fieldcontestform",
-        "createOrEditLabel": "Create or edit a Fieldcontestform",
-        "notFound": "No Fieldcontestforms found"
+        "title": "حقــول إستمــارة المنــاظـرة",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء حقــول إستمــارة منــاظـرة جــديــدة",
+        "createOrEditLabel": "إنشــاء أو تحييـن حقــول إستمــارةالمنــاظـرة",
+        "notFound": "لايـوجد أي حقــول إستمــارة منــاظـرة"
       },
-      "created": "A new Fieldcontestform is created with identifier {{ param }}",
-      "updated": "A Fieldcontestform is updated with identifier {{ param }}",
-      "deleted": "A Fieldcontestform is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة حقــول إستمــارة منــاظـرة جــديـدة بنجــاح تحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين حقــول إستمــارة المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف حقــول إستمــارة المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Fieldcontestform {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف حقــول إستمــارة المنــاظـرة صـاحبة المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Fieldcontestform"
+        "title": "حقــول إستمــارة المنــاظـرة"
       },
-      "id": "ID",
-      "fname": "Fname",
-      "ftype": "Ftype",
-      "fvalue": "Fvalue",
-      "frank": "Frank",
-      "fsize": "Fsize",
-      "contestform": "Contestform"
+      "id": "المعــرّف",
+      "fname": "الإسـم",
+      "ftype": "النـوع",
+      "fvalue": "القيـمة",
+      "frank": "ترتيب الحقـل",
+      "fsize": "حجـم الحقـل",
+      "contestform": "إستمــارة المنــاظـرة"
     }
   }
 }

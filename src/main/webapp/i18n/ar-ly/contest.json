@@ -2,32 +2,32 @@
   "contestmanagerdbApp": {
     "contest": {
       "home": {
-        "title": "Contests",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Contest",
-        "createOrEditLabel": "Create or edit a Contest",
-        "notFound": "No Contests found"
+        "title": "المنــاظـــرات",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء منــاظـرة جــديــدة",
+        "createOrEditLabel": "إنشــاء أو تحييـن المنــاظـرة",
+        "notFound": "لايـوجد أي منــاظـرة"
       },
-      "created": "A new Contest is created with identifier {{ param }}",
-      "updated": "A Contest is updated with identifier {{ param }}",
-      "deleted": "A Contest is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة منــاظـرة جــديـدة بنجــاح تحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف المنــاظـرة بنجــاح تحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Contest {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف المنــاظـرة صـاحبة المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Contest"
+        "title": "المنــاظـــرات"
       },
-      "id": "ID",
-      "code": "Code",
-      "rank": "Rank",
-      "name": "Name",
-      "parent": "Parent",
-      "nbpositions": "Nbpositions",
-      "status": "Status",
-      "contestannounce": "Contestannounce",
-      "grade": "Grade",
-      "speciality": "Speciality",
-      "sector": "Sector"
+      "id": "المعــرّف",
+      "code": "عـرض عـدد",
+      "rank": "العـدد الرّتبـي",
+      "name": "إسـم المنـاظرة",
+      "parent": "المنـاظرة الأب",
+      "nbpositions": "عـدد الخـطط المفتـوحـة",
+      "status": "حــالة المنـاظـرة",
+      "contestannounce": "إعــلان المنــاظرة",
+      "grade": "الرتبــة",
+      "speciality": "الإختصــاص",
+      "sector": "المســلك"
     }
   }
 }

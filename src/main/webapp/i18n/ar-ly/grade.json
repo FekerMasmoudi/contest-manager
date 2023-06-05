@@ -2,26 +2,26 @@
   "contestmanagerdbApp": {
     "grade": {
       "home": {
-        "title": "Grades",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Grade",
-        "createOrEditLabel": "Create or edit a Grade",
-        "notFound": "No Grades found"
+        "title": "الرتبــة",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء رتبــة جــديدة",
+        "createOrEditLabel": "إنشــاء أو تحييـن الرتبــة",
+        "notFound": "لايـوجد أي رتبــة"
       },
-      "created": "A new Grade is created with identifier {{ param }}",
-      "updated": "A Grade is updated with identifier {{ param }}",
-      "deleted": "A Grade is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة رتبــة جــديـدة بنجــاح تحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين الرتبــة بنجــاح تحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف الرتبــة بنجــاح تحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Grade {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف الرتبــة صـاحبة المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Grade"
+        "title": "الرتبــة"
       },
-      "id": "ID",
-      "code": "Code",
-      "designation": "Designation",
-      "certificate": "Certificate",
-      "educationlevel": "Educationlevel"
+      "id": "المعــرّف",
+      "code": "الرّمـز",
+      "designation": "التّسميــة",
+      "certificate": "الشّهــادة",
+      "educationlevel": "المستــوى التعليمــي"
     }
   }
 }

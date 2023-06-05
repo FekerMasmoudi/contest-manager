@@ -32,7 +32,7 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="id" hidden>
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -103,7 +103,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let contest of contests; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <td hidden>
             <a [routerLink]="['/contest', contest.id, 'view']">{{ contest.id }}</a>
           </td>
           <td>{{ contest.code }}</td>
@@ -114,22 +114,24 @@
           <td>{{ contest.status }}</td>
           <td>
             <div *ngIf="contest.contestannounce">
-              <a [routerLink]="['/contestannounce', contest.contestannounce.id, 'view']">{{ contest.contestannounce.id }}</a>
+              <a [routerLink]="['/contestannounce', contest.contestannounce.announceText, 'view']">{{
+                contest.contestannounce.announceText
+              }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="contest.grade">
-              <a [routerLink]="['/grade', contest.grade.id, 'view']">{{ contest.grade.id }}</a>
+              <a [routerLink]="['/grade', contest.grade.designation, 'view']">{{ contest.grade.designation }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="contest.speciality">
-              <a [routerLink]="['/speciality', contest.speciality.id, 'view']">{{ contest.speciality.id }}</a>
+              <a [routerLink]="['/speciality', contest.speciality.designation, 'view']">{{ contest.speciality.designation }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="contest.sector">
-              <a [routerLink]="['/sector', contest.sector.id, 'view']">{{ contest.sector.id }}</a>
+              <a [routerLink]="['/sector', contest.sector.designation, 'view']">{{ contest.sector.designation }}</a>
             </div>
           </td>
           <td class="text-end">

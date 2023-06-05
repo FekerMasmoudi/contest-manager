@@ -2,24 +2,24 @@
   "contestmanagerdbApp": {
     "generalrules": {
       "home": {
-        "title": "Generalrules",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Generalrules",
-        "createOrEditLabel": "Create or edit a Generalrules",
-        "notFound": "No Generalrules found"
+        "title": "الشــروط العــامـــــة",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء شــروط عــامّــة جــديدة ",
+        "createOrEditLabel": "إنشــاء أو تحييـن الشــروط العــامــة",
+        "notFound": "لايـوجد أي شــروط عــامة"
       },
-      "created": "A new Generalrules is created with identifier {{ param }}",
-      "updated": "A Generalrules is updated with identifier {{ param }}",
-      "deleted": "A Generalrules is deleted with identifier {{ param }}",
+      "created": " لقد تمّت إضـافة شرط عــام جــديـد بنجــاح يحمـل المعرّف {{ param }} ",
+      "updated": " لقد تمّ تحيين الشرط العــام بنجــاح يحمـل المعرّف {{ param }} ",
+      "deleted": " لقد تمّ حــذف الشرط العــام بنجــاح يحمـل المعرّف {{ param }} ",
       "delete": {
-        "question": "Are you sure you want to delete Generalrules {{ id }}?"
+        "question": " هل أنت متأكـد من حـذف الشرط العام صـاحب المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Generalrules"
+        "title": "الشــروط العــامـــــة"
       },
-      "id": "ID",
-      "designation": "Designation",
-      "effectdate": "Effectdate"
+      "id": "المعــرّف",
+      "designation": "التّسميــة",
+      "effectdate": "تــاريخ التفعــيل"
     }
   }
 }

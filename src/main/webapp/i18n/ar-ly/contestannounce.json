@@ -2,27 +2,27 @@
   "contestmanagerdbApp": {
     "contestannounce": {
       "home": {
-        "title": "Contestannounces",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Contestannounce",
-        "createOrEditLabel": "Create or edit a Contestannounce",
-        "notFound": "No Contestannounces found"
+        "title": "إعــلان المنــاظرة",
+        "refreshListLabel": "تحديث القائمة",
+        "createLabel": "إنشــاء إعــلان منــاظـرة جــديــد",
+        "createOrEditLabel": "إنشــاء أو تحييـن إعــلان المنــاظـرة",
+        "notFound": "لايـوجد أي إعـلان لمنــاظـرة"
       },
-      "created": "A new Contestannounce is created with identifier {{ param }}",
-      "updated": "A Contestannounce is updated with identifier {{ param }}",
-      "deleted": "A Contestannounce is deleted with identifier {{ param }}",
+      "created": "لقد تمّت إضـافة الإعلان لمنــاظـرة جــديـد بنجــاح يحمـل المعرّف {{ param }}",
+      "updated": "لقد تمّ تحيين الإعلان لمنــاظـرة بنجــاح يحمـل المعرّف {{ param }}",
+      "deleted": "لقد تمّ حــذف الإعلان لمنــاظـرة بنجــاح يحمـل المعرّف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Contestannounce {{ id }}?"
+        "question": "هل أنت متأكـد من حـذف الإعلان لمنــاظـرة صـاحب المعرّف {{ id }} ؟"
       },
       "detail": {
-        "title": "Contestannounce"
+        "title": "إعــلان المنــاظرة"
       },
-      "id": "ID",
-      "announceText": "Announce Text",
-      "startdate": "Startdate",
-      "limitdate": "Limitdate",
-      "status": "Status",
-      "generalrules": "Generalrules"
+      "id": "المعرّف",
+      "announceText": " نــص الإعــلان لمنــاظرة",
+      "startdate": "تــاريخ فتـح المنــاظرة",
+      "limitdate": "آخــر أجل لقبــول التّرشــحــات",
+      "status": "حـالة إعلان المنــاظرة",
+      "generalrules": "الشــروط العــامــة"
     }
   }
 }

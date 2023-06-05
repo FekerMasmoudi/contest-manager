@@ -8,11 +8,12 @@
       >
         Create or edit a Fieldcontestform
       </h2>
-
+      <hr />
+      <br />
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null" hidden>
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
@@ -47,12 +48,28 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.frank" for="field_frank">Frank</label>
-          <input type="number" class="form-control" name="frank" id="field_frank" data-cy="frank" formControlName="frank" />
+          <input
+            type="number"
+            class="form-control"
+            name="frank"
+            id="field_frank"
+            data-cy="frank"
+            formControlName="frank"
+            style="direction: rtl"
+          />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.fieldcontestform.fsize" for="field_fsize">Fsize</label>
-          <input type="number" class="form-control" name="fsize" id="field_fsize" data-cy="fsize" formControlName="fsize" />
+          <input
+            type="number"
+            class="form-control"
+            name="fsize"
+            id="field_fsize"
+            data-cy="fsize"
+            formControlName="fsize"
+            style="direction: rtl"
+          />
         </div>
 
         <div class="row mb-3">
