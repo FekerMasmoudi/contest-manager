@@ -32,7 +32,6 @@ public class Contest implements Serializable {
     @Field("name")
     private String name;
 
-    @NotNull
     @Field("parent")
     private String parent;
 

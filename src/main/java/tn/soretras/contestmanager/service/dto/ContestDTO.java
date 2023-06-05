@@ -21,7 +21,6 @@ public class ContestDTO implements Serializable {
     @NotNull
     private String name;
 
-    @NotNull
     private String parent;
 
     @NotNull
