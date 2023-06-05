@@ -56,9 +56,7 @@ export class ContestFormService {
       name: new FormControl(contestRawValue.name, {
         validators: [Validators.required],
       }),
-      parent: new FormControl(contestRawValue.parent, {
-        validators: [Validators.required],
-      }),
+      parent: new FormControl(contestRawValue.parent, {}),
       nbpositions: new FormControl(contestRawValue.nbpositions, {
         validators: [Validators.required],
       }),
