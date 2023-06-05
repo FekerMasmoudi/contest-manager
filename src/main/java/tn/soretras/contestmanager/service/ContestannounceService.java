@@ -1,6 +1,8 @@
 package tn.soretras.contestmanager.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -11,7 +13,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.soretras.contestmanager.domain.Contestannounce;
-import tn.soretras.contestmanager.domain.Generalrules;
 import tn.soretras.contestmanager.repository.ContestannounceRepository;
 import tn.soretras.contestmanager.repository.GeneralrulesRepository;
 import tn.soretras.contestmanager.service.dto.ContestannounceDTO;
@@ -112,12 +113,18 @@ public class ContestannounceService {
         if (pcontanndto != null && pcontanndto.hasContent()) {
             contestannounceList = pcontanndto.getContent();
             for (int i = 0; i < contestannounceList.size(); i++) { //for designation generalrules
-                String idcontann_generules = ((Contestannounce) contestannounceList.get(i).getGeneralrules()).getId();
-                GeneralrulesDTO generulesdto = generalrulesRepository
-                    .findById(idcontann_generules)
-                    .map(generalrulesMapper::toDto)
-                    .orElse(null);
-                contestannounceList.get(i).setGeneralrules((Set<GeneralrulesDTO>) generulesdto);
+                Set<GeneralrulesDTO> setgenerulesdto = contestannounceList.get(i).getGeneralrules();
+                Set<GeneralrulesDTO> filledsetgenerulesdto = new HashSet<GeneralrulesDTO>();
+
+                Iterator<GeneralrulesDTO> iterator = setgenerulesdto.iterator();
+                while (iterator.hasNext()) {
+                    GeneralrulesDTO element = (GeneralrulesDTO) iterator.next();
+                    String id = element.getId();
+                    Optional<Object> generulesdto = generalrulesRepository.findById(id).map(generalrulesMapper::toDto);
+                    filledsetgenerulesdto.add((GeneralrulesDTO) generulesdto.get());
+                }
+
+                contestannounceList.get(i).setGeneralrules(filledsetgenerulesdto);
             }
             Long total = (long) contestannounceList.size();
             @SuppressWarnings("unused")
@@ -143,7 +150,22 @@ public class ContestannounceService {
      */
     public Optional<ContestannounceDTO> findOne(String id) {
         log.debug("Request to get Contestannounce : {}", id);
-        return contestannounceRepository.findOneWithEagerRelationships(id).map(contestannounceMapper::toDto);
+        Optional<ContestannounceDTO> ocdto = contestannounceRepository.findOneWithEagerRelationships(id).map(contestannounceMapper::toDto);
+
+        Set<GeneralrulesDTO> setgenerulesdto = ocdto.get().getGeneralrules();
+        Set<GeneralrulesDTO> filledsetgenerulesdto = new HashSet<GeneralrulesDTO>();
+
+        Iterator<GeneralrulesDTO> iterator = setgenerulesdto.iterator();
+        while (iterator.hasNext()) {
+            GeneralrulesDTO element = (GeneralrulesDTO) iterator.next();
+            String idgdto = element.getId();
+            Optional<Object> generulesdto = generalrulesRepository.findById(idgdto).map(generalrulesMapper::toDto);
+            filledsetgenerulesdto.add((GeneralrulesDTO) generulesdto.get());
+        }
+
+        ocdto.get().setGeneralrules(filledsetgenerulesdto);
+
+        return ocdto;
     }
 
     /**
