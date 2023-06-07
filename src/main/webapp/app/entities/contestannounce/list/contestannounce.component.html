@@ -64,7 +64,7 @@
           </th>
 
           <!-- Modified By Mohamed -->
-          <th scope="col" jhiSortBy="generalrules">
+          <th scope="col" jhiSortBy="generalrules" hidden>
             <div class="d-flex">
               <span jhiTranslate="contestmanagerdbApp.contestannounce.generalrules">Generalrules</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -84,9 +84,9 @@
           <td>{{ contestannounce.status }}</td>
 
           <!-- Modified by Mohamed -->
-          <td>
+          <td hidden>
             <span *ngFor="let generalrules of contestannounce.generalrules; let last = last">
-              <a [routerLink]="['/generalrules', generalrules.designation, 'view']">{{ generalrules.designation }}</a
+              <a [routerLink]="['/generalrules', generalrules.id, 'view']">{{ generalrules.designation }}</a
               >{{ last ? '' : ', ' }}
             </span>
           </td>

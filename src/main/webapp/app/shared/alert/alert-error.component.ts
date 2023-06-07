@@ -55,7 +55,7 @@ export class AlertErrorComponent implements OnDestroy {
               const fieldName: string = translateService.instant(
                 `contestmanagerdbApp.${fieldError.objectName as string}.${convertedField}`
               );
-              this.addErrorAlert(`Error on field "${fieldName}"`, `error.${fieldError.message as string}`, { fieldName });
+              this.addErrorAlert(`خطأ في حـقل "${fieldName}"`, `error.${fieldError.message as string}`, { fieldName });
             }
           } else if (httpErrorResponse.error !== '' && httpErrorResponse.error.message) {
             this.addErrorAlert(

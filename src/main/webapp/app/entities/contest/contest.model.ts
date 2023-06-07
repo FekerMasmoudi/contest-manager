@@ -2,6 +2,7 @@ import { IContestannounce } from 'app/entities/contestannounce/contestannounce.m
 import { IGrade } from 'app/entities/grade/grade.model';
 import { ISpeciality } from 'app/entities/speciality/speciality.model';
 import { ISector } from 'app/entities/sector/sector.model';
+import { IContestfield } from '../contestfield/contestfield.model';
 
 export interface IContest {
   id: string;
@@ -15,6 +16,8 @@ export interface IContest {
   grade?: Pick<IGrade, 'id' | 'designation'> | null;
   speciality?: Pick<ISpeciality, 'id' | 'designation'> | null;
   sector?: Pick<ISector, 'id' | 'designation'> | null;
+
+  contestfields?: IContestfield[] | null;
 }
 
 export type NewContest = Omit<IContest, 'id'> & { id: null };

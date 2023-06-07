@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { IContestfield } from 'app/entities/contestfield/contestfield.model';
 
 import { IContest, NewContest } from '../contest.model';
 
@@ -28,6 +29,8 @@ type ContestFormGroupContent = {
   grade: FormControl<IContest['grade']>;
   speciality: FormControl<IContest['speciality']>;
   sector: FormControl<IContest['sector']>;
+
+  contestfields: FormControl<IContest['contestfields']>;
 };
 
 export type ContestFormGroup = FormGroup<ContestFormGroupContent>;
@@ -73,6 +76,7 @@ export class ContestFormService {
       sector: new FormControl(contestRawValue.sector, {
         validators: [Validators.required],
       }),
+      contestfields: new FormControl(contestRawValue.contestfields, {}),
     });
   }
 

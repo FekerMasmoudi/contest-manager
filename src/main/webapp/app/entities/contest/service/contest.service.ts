@@ -6,20 +6,35 @@ import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IContest, NewContest } from '../contest.model';
+import { IContestfield, NewContestfield } from 'app/entities/contestfield/contestfield.model';
 
 export type PartialUpdateContest = Partial<IContest> & Pick<IContest, 'id'>;
 
 export type EntityResponseType = HttpResponse<IContest>;
 export type EntityArrayResponseType = HttpResponse<IContest[]>;
 
+//Modified By Mohamed
+
+export type EntityResponseTypeCf = HttpResponse<IContestfield>;
+
 @Injectable({ providedIn: 'root' })
 export class ContestService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/contests');
+
+  //Modified By Mohamed
+
+  protected resourceUrlCf = this.applicationConfigService.getEndpointFor('api/contestfields');
 
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(contest: NewContest): Observable<EntityResponseType> {
     return this.http.post<IContest>(this.resourceUrl, contest, { observe: 'response' });
+  }
+
+  //Modified By Mohamed
+
+  createContestfield(contestfield: NewContestfield): Observable<EntityResponseTypeCf> {
+    return this.http.post<IContestfield>(this.resourceUrlCf, contestfield, { observe: 'response' });
   }
 
   update(contest: IContest): Observable<EntityResponseType> {

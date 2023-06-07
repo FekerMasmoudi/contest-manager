@@ -14,6 +14,7 @@ import { GradeService } from 'app/entities/grade/service/grade.service';
 import { ISpeciality } from 'app/entities/speciality/speciality.model';
 import { SpecialityService } from 'app/entities/speciality/service/speciality.service';
 import { ISector } from 'app/entities/sector/sector.model';
+import { IContestfield } from 'app/entities/contestfield/contestfield.model';
 import { SectorService } from 'app/entities/sector/service/sector.service';
 
 @Component({
@@ -21,6 +22,22 @@ import { SectorService } from 'app/entities/sector/service/sector.service';
   templateUrl: './contest-update.component.html',
 })
 export class ContestUpdateComponent implements OnInit {
+  //Modifed By Mohamed
+  line: IContestfield = {
+    id: '',
+    mandatory: false,
+    reference: '',
+    ctype: '',
+    cname: '',
+    logic: '',
+    fopconstraint: '',
+    fvalue: '',
+    sopconstraint: '',
+    svalue: '',
+  };
+
+  contestfieldsLines: IContestfield[] = [];
+
   isSaving = false;
   contest: IContest | null = null;
 
@@ -68,11 +85,39 @@ export class ContestUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const contest = this.contestFormService.getContest(this.editForm);
+    //const contestfield = this.contestFormService.getContestfield(this.editCfForm);
+    console.log(this.editForm);
     if (contest.id !== null) {
       this.subscribeToSaveResponse(this.contestService.update(contest));
     } else {
       this.subscribeToSaveResponse(this.contestService.create(contest));
+      //this.subscribeToSaveResponse(this.contestService.createContestfield(contestfield));
     }
+  }
+
+  //*******Modified By Mohamed******
+
+  addContestFieldsLine(): void {
+    // Create a new instance of the ContestFields line
+    const newLine: IContestfield = {
+      id: '',
+      mandatory: false,
+      reference: '',
+      ctype: '',
+      cname: '',
+      logic: '',
+      fopconstraint: '',
+      fvalue: '',
+      sopconstraint: '',
+      svalue: '',
+    };
+
+    // Add the new ContestFields line to the array
+    this.contestfieldsLines.push(newLine);
+  }
+
+  handleContestfieldLineDeleted(index: number): void {
+    this.contestfieldsLines.splice(index, 1);
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IContest>>): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,11 +10,25 @@ import { ContestfieldService } from '../service/contestfield.service';
 import { IContest } from 'app/entities/contest/contest.model';
 import { ContestService } from 'app/entities/contest/service/contest.service';
 
+import { FormControl } from '@angular/forms';
+
 @Component({
   selector: 'jhi-contestfield-update',
   templateUrl: './contestfield-update.component.html',
 })
 export class ContestfieldUpdateComponent implements OnInit {
+  //Modified By Mohamed
+
+  @Input() contestfieldLine!: IContestfield;
+  @Input() index!: number;
+  //@Output() estimateLineChanged = new EventEmitter<{lineIndex : number, estimateLine: EstimateLine}>();
+  @Output() contestfieldLineDeleted = new EventEmitter<number>();
+  contestfields: IContestfield[] = [];
+  filteredOptions!: Observable<IContestfield[]>;
+  searchQuery: string = '';
+  selectedContestfield!: IContestfield;
+  myControl = new FormControl('');
+
   isSaving = false;
   contestfield: IContestfield | null = null;
 
@@ -40,6 +54,10 @@ export class ContestfieldUpdateComponent implements OnInit {
 
       this.loadRelationshipsOptions();
     });
+
+    //Modifed By Mohamed
+
+    console.log(this.index);
   }
 
   previousState(): void {
@@ -93,5 +111,12 @@ export class ContestfieldUpdateComponent implements OnInit {
         map((contests: IContest[]) => this.contestService.addContestToCollectionIfMissing<IContest>(contests, this.contestfield?.contest))
       )
       .subscribe((contests: IContest[]) => (this.contestsSharedCollection = contests));
+  }
+
+  //Modifed By Mohamed
+
+  deleteContestfieldLine(): void {
+    alert(this.selectedContestfield);
+    this.contestfieldLineDeleted.emit(this.index);
   }
 }
