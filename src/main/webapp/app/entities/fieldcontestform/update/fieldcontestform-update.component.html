@@ -77,14 +77,16 @@
             >Contestform</label
           >
           <select
-            class="form-control"
+            class="form-select"
             id="field_contestform"
             data-cy="contestform"
             name="contestform"
             formControlName="contestform"
             [compareWith]="compareContestform"
           >
-            <option *ngIf="!editForm.get('contestform')!.value" [ngValue]="null" selected></option>
+            <option *ngIf="!editForm.get('contestform')!.value" [ngValue]="null" selected>
+              -- الرّجـاء إختيـار إستمـارة المنــاظرة --
+            </option>
             <option [ngValue]="contestformOption" *ngFor="let contestformOption of contestformsSharedCollection">
               {{ contestformOption.id }}
             </option>

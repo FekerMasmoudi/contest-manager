@@ -35,7 +35,7 @@
         <dt><span jhiTranslate="contestmanagerdbApp.contestannounce.generalrules">Generalrules</span></dt>
         <dd>
           <span *ngFor="let generalrules of contestannounce.generalrules; let last = last">
-            <a [routerLink]="['/generalrules', generalrules.id, 'view']">{{ generalrules.id }}</a
+            <a [routerLink]="['/generalrules', generalrules.id, 'view']">{{ generalrules.designation }}</a
             >{{ last ? '' : ', ' }}
           </span>
         </dd>

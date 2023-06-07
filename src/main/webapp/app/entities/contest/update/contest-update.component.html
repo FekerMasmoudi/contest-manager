@@ -200,6 +200,21 @@
             هذا الحقل مطلوب.
           </small>
         </div>
+
+        <!-- **** Debut Modified By Mohamed**** -->
+
+        <div class="row mb-3" *ngFor="let line of contestfieldsLines; let i = index">
+          <jhi-contestfield-update [contestfieldLine]="line" [index]="i" (contestfieldLineDeleted)="handleContestfieldLineDeleted($event)">
+          </jhi-contestfield-update>
+        </div>
+
+        <div style="margin-bottom: 10px">
+          <button type="button" class="btn btn-primary" (click)="addContestFieldsLine()">
+            <fa-icon icon="add"></fa-icon>&nbsp;<span jhiTranslate="entity.action.addcontestfields">Add Contest Fields</span>
+          </button>
+        </div>
+
+        <!-- **** Fin Modified By Mohamed**** -->
       </div>
 
       <div>
