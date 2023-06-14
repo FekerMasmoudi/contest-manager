@@ -10,18 +10,22 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tn.soretras.contestmanager.domain.Contest;
+import tn.soretras.contestmanager.domain.Contestfield;
 import tn.soretras.contestmanager.repository.ContestRepository;
 import tn.soretras.contestmanager.repository.ContestannounceRepository;
+import tn.soretras.contestmanager.repository.ContestfieldRepository;
 import tn.soretras.contestmanager.repository.GradeRepository;
 import tn.soretras.contestmanager.repository.SectorRepository;
 import tn.soretras.contestmanager.repository.SpecialityRepository;
 import tn.soretras.contestmanager.service.dto.ContestDTO;
 import tn.soretras.contestmanager.service.dto.ContestannounceDTO;
+import tn.soretras.contestmanager.service.dto.ContestfieldDTO;
 import tn.soretras.contestmanager.service.dto.GradeDTO;
 import tn.soretras.contestmanager.service.dto.SectorDTO;
 import tn.soretras.contestmanager.service.dto.SpecialityDTO;
 import tn.soretras.contestmanager.service.mapper.ContestMapper;
 import tn.soretras.contestmanager.service.mapper.ContestannounceMapper;
+import tn.soretras.contestmanager.service.mapper.ContestfieldMapper;
 import tn.soretras.contestmanager.service.mapper.GradeMapper;
 import tn.soretras.contestmanager.service.mapper.SectorMapper;
 import tn.soretras.contestmanager.service.mapper.SpecialityMapper;
@@ -56,6 +60,12 @@ public class ContestService {
 
     private final SectorMapper sectorMapper;
 
+    //Modified By Mohamed
+
+    private final ContestfieldRepository contestfieldRepository;
+
+    private final ContestfieldMapper contestfieldMapper;
+
     public ContestService(
         ContestRepository contestRepository,
         ContestMapper contestMapper,
@@ -66,7 +76,9 @@ public class ContestService {
         SpecialityRepository specialityRepository,
         SpecialityMapper specialityMapper,
         SectorRepository sectorRepository,
-        SectorMapper sectorMapper
+        SectorMapper sectorMapper,
+        ContestfieldRepository contestfieldRepository,
+        ContestfieldMapper contestfieldMapper
     ) {
         this.contestRepository = contestRepository;
         this.contestMapper = contestMapper;
@@ -84,6 +96,9 @@ public class ContestService {
 
         this.sectorRepository = sectorRepository;
         this.sectorMapper = sectorMapper;
+
+        this.contestfieldRepository = contestfieldRepository;
+        this.contestfieldMapper = contestfieldMapper;
     }
 
     /**

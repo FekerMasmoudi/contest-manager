@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IContest, NewContest } from '../contest.model';
 import { IContestfield, NewContestfield } from 'app/entities/contestfield/contestfield.model';
+import { ContestfieldService } from 'app/entities/contestfield/service/contestfield.service';
+import { ContestfieldFormGroup } from 'app/entities/contestfield/update/contestfield-form.service';
 
 export type PartialUpdateContest = Partial<IContest> & Pick<IContest, 'id'>;
 
@@ -14,6 +16,7 @@ export type EntityResponseType = HttpResponse<IContest>;
 export type EntityArrayResponseType = HttpResponse<IContest[]>;
 
 //Modified By Mohamed
+export type PartialUpdateContestfield = Partial<IContestfield> & Pick<IContestfield, 'id'>;
 
 export type EntityResponseTypeCf = HttpResponse<IContestfield>;
 
@@ -25,13 +28,34 @@ export class ContestService {
 
   protected resourceUrlCf = this.applicationConfigService.getEndpointFor('api/contestfields');
 
-  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
+  constructor(
+    protected http: HttpClient,
+    protected applicationConfigService: ApplicationConfigService,
+    protected cons1: ContestfieldService
+  ) {}
+  createTwo(contest: NewContest, groupe1: any, id1?: any): void {
+    console.log('out for' + id1);
+    if (groupe1 != null && groupe1 != undefined) {
+      console.log('out for' + id1);
 
-  create(contest: NewContest): Observable<EntityResponseType> {
-    return this.http.post<IContest>(this.resourceUrl, contest, { observe: 'response' });
+      for (let i = 0; i < groupe1.length; i++) {
+        groupe1[i].contest.id = id1;
+
+        this.http.post<IContestfield>(this.resourceUrlCf, groupe1[i], { observe: 'response' }).subscribe(result => {
+          console.log(result.body?.id);
+        });
+      }
+    }
+  }
+  create(contest: NewContest, groupe: any): Observable<EntityResponseType> {
+    return this.http.post<IContest>(this.resourceUrl, contest, { observe: 'response' }).pipe(
+      tap(data => {
+        this.createTwo(contest, groupe, data.body?.id);
+      })
+    );
   }
 
-  //Modified By Mohamed
+  /* Modified By Mohamed */
 
   createContestfield(contestfield: NewContestfield): Observable<EntityResponseTypeCf> {
     return this.http.post<IContestfield>(this.resourceUrlCf, contestfield, { observe: 'response' });

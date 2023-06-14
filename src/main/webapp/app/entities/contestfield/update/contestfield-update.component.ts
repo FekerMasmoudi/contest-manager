@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 
 import { ContestfieldFormService, ContestfieldFormGroup } from './contestfield-form.service';
-import { IContestfield } from '../contestfield.model';
+import { IContestfield, NewContestfield } from '../contestfield.model';
 import { ContestfieldService } from '../service/contestfield.service';
 import { IContest } from 'app/entities/contest/contest.model';
 import { ContestService } from 'app/entities/contest/service/contest.service';
 
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'jhi-contestfield-update',
@@ -20,14 +20,19 @@ export class ContestfieldUpdateComponent implements OnInit {
   //Modified By Mohamed
 
   @Input() contestfieldLine!: IContestfield;
+  //@Input() contestfieldLine!: FormControl<IContest['contestfields']>;
   @Input() index!: number;
+
   //@Output() estimateLineChanged = new EventEmitter<{lineIndex : number, estimateLine: EstimateLine}>();
   @Output() contestfieldLineDeleted = new EventEmitter<number>();
-  contestfields: IContestfield[] = [];
-  filteredOptions!: Observable<IContestfield[]>;
+
+  @Output() contestfieldLoaded = new EventEmitter<{ lineIndex: number; contestfield: IContestfield }>();
+
+  contestfields: IContest[] = [];
+  //filteredOptions!: Observable<IContestfield[]>;
   searchQuery: string = '';
   selectedContestfield!: IContestfield;
-  myControl = new FormControl('');
+  //myControl = new FormControl('');
 
   isSaving = false;
   contestfield: IContestfield | null = null;
@@ -57,7 +62,7 @@ export class ContestfieldUpdateComponent implements OnInit {
 
     //Modifed By Mohamed
 
-    console.log(this.index);
+    console.log('Index of add Contestfield', this.index);
   }
 
   previousState(): void {
@@ -72,6 +77,13 @@ export class ContestfieldUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.contestfieldService.create(contestfield));
     }
+  }
+
+  //Add By Mohamed
+  consolelog(): void {
+    //console.log(this.fields.value);
+    //const contestfield = this.contestfieldFormService.getContestfield(this.editCfForm);
+    console.log('List Of Contest Fields :', this.editForm);
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IContestfield>>): void {
