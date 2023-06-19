@@ -33,7 +33,7 @@ export class ContestService {
     protected applicationConfigService: ApplicationConfigService,
     protected cons1: ContestfieldService
   ) {}
-  createTwo(contest: NewContest, groupe1: any, id1?: any): void {
+  /* createTwo(contest: NewContest, groupe1: any, id1?: any): void {
     console.log('out for' + id1);
     if (groupe1 != null && groupe1 != undefined) {
       console.log('out for' + id1);
@@ -46,11 +46,16 @@ export class ContestService {
         });
       }
     }
-  }
-  create(contest: NewContest, groupe: any): Observable<EntityResponseType> {
+  }*/
+  create(contest: NewContest): Observable<EntityResponseType> {
+    if (contest.contestfields?.length)
+      for (let i = 0; i < contest.contestfields.length; i++) {
+        contest.contestfields[i].id = i.toString();
+      }
+    console.log('contest before send to back', contest);
     return this.http.post<IContest>(this.resourceUrl, contest, { observe: 'response' }).pipe(
       tap(data => {
-        this.createTwo(contest, groupe, data.body?.id);
+        console.log(data.body?.contestfields);
       })
     );
   }

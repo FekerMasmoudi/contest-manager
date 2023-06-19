@@ -29,26 +29,29 @@ export class ContestUpdateComponent implements OnInit {
   @ViewChild(ContestfieldUpdateComponent) y!: ContestfieldUpdateComponent;
 
   //Modifed By Mohamed
-  line: IContestfield = {
-    id: '',
-    cname: '',
-    mandatory: false,
-    reference: '',
-    ctype: '',
-    logic: '',
-    fopconstraint: '',
-    fvalue: '',
-    sopconstraint: '',
-    svalue: '',
-  };
+  /*line: IContestfield = { 
+	  
+	  id : '' ,
+      cname: '',
+      mandatory: false,
+      reference: '',
+      ctype: '',
+      logic: '',
+      fopconstraint: '',
+      fvalue: '',
+      sopconstraint: '',
+      svalue: '',
+      
+      
+    }; */
 
   //fields!: FormControl<IContest['contestfields']>  ;
 
   //line = FormControl<IContest['contestfields']>;
 
   contestfieldsLines: IContestfield[] = [];
-  contestfieldsLines1: IContestfield | NewContestfield[] = [];
-  contestfieldsLines2: any[] = [];
+  //contestfieldsLines1: IContestfield|NewContestfield [] = [];
+  //contestfieldsLines2: any [] = [];
   //contestfieldsLines: FormControl<IContest['contestfields']> [] = [];
 
   isSaving = false;
@@ -141,32 +144,56 @@ export class ContestUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
-    const con = this.contestfieldFormService.getContestfield(this.y.editForm);
+
     const contest = this.contestFormService.getContest(this.editForm);
     //const contestfield = this.contestfieldFormService.getContestfield(this.editCfForm);
 
     if (contest.id !== null) {
       this.subscribeToSaveResponse(this.contestService.update(contest));
     } else {
-      if (this.contestfieldsLines.length ?? 0) {
-        for (let i = 0; i < this.contestfieldsLines.length; i++) {
-          con.cname = this.contestfieldsLines[i].cname;
-          con.ctype = this.contestfieldsLines[i].ctype;
-          con.reference = this.contestfieldsLines[i].reference;
-          con.mandatory = this.contestfieldsLines[i].mandatory;
-          con.fopconstraint = this.contestfieldsLines[i].fopconstraint;
-          con.fvalue = this.contestfieldsLines[i].fvalue;
-          con.sopconstraint = this.contestfieldsLines[i].sopconstraint;
-          con.svalue = this.contestfieldsLines[i].svalue;
-          con.logic = this.contestfieldsLines[i].logic;
+      /* if (this.contestfieldsLines.length??0){
+	for (let i=0;i<this.contestfieldsLines.length;i++){
+		const con : IContestfield = { 
+	  
+	  id: '', 
+      cname: '',
+      mandatory: false,
+      reference: '',
+      ctype: '',
+      logic: '',
+      fopconstraint: '',
+      fvalue: '',
+      sopconstraint: '',
+      svalue: '',
+      
+      
+    };
+		  con.cname=(this.contestfieldsLines[i].cname);
+		  con.ctype=(this.contestfieldsLines[i].ctype);
+	       con.reference=(this.contestfieldsLines[i].reference);
+	        con.mandatory=(this.contestfieldsLines[i].mandatory);
+	         con.fopconstraint=(this.contestfieldsLines[i].fopconstraint);
+	          con.fvalue=(this.contestfieldsLines[i].fvalue);
+	           con.sopconstraint=(this.contestfieldsLines[i].sopconstraint);
+	            con.svalue=(this.contestfieldsLines[i].svalue);
+	            con.logic=(this.contestfieldsLines[i].logic);
+	            
+	            //con.contest=null,
+	            //con.contest=null ;
+	          
+	            		
+	this.contestfieldsLines2.push(con);
+		console.log(this.contestfieldsLines);
+		
+	}
+     } */
 
-          this.contestfieldsLines2.push(con);
-          console.log(this.contestfieldsLines);
-        }
-      }
-      this.subscribeToSaveResponse(this.contestService.create(contest, this.contestfieldsLines2));
+      contest.contestfields = this.contestfieldsLines;
+
+      this.subscribeToSaveResponse(this.contestService.create(contest));
       //this.contestfieldsLines.push(this.line);
       console.log(this.contestfieldsLines);
+      console.log('contest = ', contest);
     }
   }
 

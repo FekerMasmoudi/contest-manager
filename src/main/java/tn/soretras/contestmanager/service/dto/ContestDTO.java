@@ -1,7 +1,9 @@
 package tn.soretras.contestmanager.service.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.validation.constraints.*;
 
 /**
@@ -35,6 +37,8 @@ public class ContestDTO implements Serializable {
     private SpecialityDTO speciality;
 
     private SectorDTO sector;
+
+    private Set<ContestfieldDTO> contestfields = new HashSet<>();
 
     public String getId() {
         return id;
@@ -145,21 +149,42 @@ public class ContestDTO implements Serializable {
         return Objects.hash(this.id);
     }
 
-    // prettier-ignore
+    public Set<ContestfieldDTO> getContestfields() {
+        return contestfields;
+    }
+
+    public void setContestfields(Set<ContestfieldDTO> contestfields) {
+        this.contestfields = contestfields;
+    }
+
     @Override
     public String toString() {
-        return "ContestDTO{" +
-            "id='" + getId() + "'" +
-            ", code=" + getCode() +
-            ", rank=" + getRank() +
-            ", name='" + getName() + "'" +
-            ", parent='" + getParent() + "'" +
-            ", nbpositions=" + getNbpositions() +
-            ", status='" + getStatus() + "'" +
-            ", contestannounce=" + getContestannounce() +
-            ", grade=" + getGrade() +
-            ", speciality=" + getSpeciality() +
-            ", sector=" + getSector() +
-            "}";
+        return (
+            "ContestDTO [id=" +
+            id +
+            ", code=" +
+            code +
+            ", rank=" +
+            rank +
+            ", name=" +
+            name +
+            ", parent=" +
+            parent +
+            ", nbpositions=" +
+            nbpositions +
+            ", status=" +
+            status +
+            ", contestannounce=" +
+            contestannounce +
+            ", grade=" +
+            grade +
+            ", speciality=" +
+            speciality +
+            ", sector=" +
+            sector +
+            ", contestfields=" +
+            contestfields +
+            "]"
+        );
     }
 }
