@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,32 +14,50 @@ import { GradeService } from 'app/entities/grade/service/grade.service';
 import { ISpeciality } from 'app/entities/speciality/speciality.model';
 import { SpecialityService } from 'app/entities/speciality/service/speciality.service';
 import { ISector } from 'app/entities/sector/sector.model';
-import { IContestfield } from 'app/entities/contestfield/contestfield.model';
+import { IContestfield, NewContestfield } from 'app/entities/contestfield/contestfield.model';
 import { SectorService } from 'app/entities/sector/service/sector.service';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ContestfieldFormGroup, ContestfieldFormService } from 'app/entities/contestfield/update/contestfield-form.service';
+import { ContestfieldService } from 'app/entities/contestfield/service/contestfield.service';
+import { ContestfieldUpdateComponent } from 'app/entities/contestfield/update/contestfield-update.component';
 
 @Component({
   selector: 'jhi-contest-update',
   templateUrl: './contest-update.component.html',
 })
 export class ContestUpdateComponent implements OnInit {
+  @ViewChild(ContestfieldUpdateComponent) y!: ContestfieldUpdateComponent;
+
   //Modifed By Mohamed
-  line: IContestfield = {
-    id: '',
-    mandatory: false,
-    reference: '',
-    ctype: '',
-    cname: '',
-    logic: '',
-    fopconstraint: '',
-    fvalue: '',
-    sopconstraint: '',
-    svalue: '',
-  };
+  /*line: IContestfield = { 
+	  
+	  id : '' ,
+      cname: '',
+      mandatory: false,
+      reference: '',
+      ctype: '',
+      logic: '',
+      fopconstraint: '',
+      fvalue: '',
+      sopconstraint: '',
+      svalue: '',
+      
+      
+    }; */
+
+  //fields!: FormControl<IContest['contestfields']>  ;
+
+  //line = FormControl<IContest['contestfields']>;
 
   contestfieldsLines: IContestfield[] = [];
+  //contestfieldsLines1: IContestfield|NewContestfield [] = [];
+  //contestfieldsLines2: any [] = [];
+  //contestfieldsLines: FormControl<IContest['contestfields']> [] = [];
 
   isSaving = false;
   contest: IContest | null = null;
+
+  contestfield: IContestfield | null = null;
 
   contestannouncesSharedCollection: IContestannounce[] = [];
   gradesSharedCollection: IGrade[] = [];
@@ -48,6 +66,8 @@ export class ContestUpdateComponent implements OnInit {
 
   editForm: ContestFormGroup = this.contestFormService.createContestFormGroup();
 
+  //editCfForm: ContestfieldFormGroup = this.contestfieldFormService.createContestfieldFormGroup();
+
   constructor(
     protected contestService: ContestService,
     protected contestFormService: ContestFormService,
@@ -55,7 +75,10 @@ export class ContestUpdateComponent implements OnInit {
     protected gradeService: GradeService,
     protected specialityService: SpecialityService,
     protected sectorService: SectorService,
-    protected activatedRoute: ActivatedRoute
+    protected activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    protected contestfieldFormService: ContestfieldFormService,
+    protected contestfieldService: ContestfieldService
   ) {}
 
   compareContestannounce = (o1: IContestannounce | null, o2: IContestannounce | null): boolean =>
@@ -82,29 +105,32 @@ export class ContestUpdateComponent implements OnInit {
     window.history.back();
   }
 
-  save(): void {
-    this.isSaving = true;
-    const contest = this.contestFormService.getContest(this.editForm);
-    //const contestfield = this.contestFormService.getContestfield(this.editCfForm);
-    console.log(this.editForm);
-    if (contest.id !== null) {
-      this.subscribeToSaveResponse(this.contestService.update(contest));
-    } else {
-      this.subscribeToSaveResponse(this.contestService.create(contest));
-      //this.subscribeToSaveResponse(this.contestService.createContestfield(contestfield));
-    }
-  }
-
   //*******Modified By Mohamed******
 
   addContestFieldsLine(): void {
     // Create a new instance of the ContestFields line
+
+    /* this.fields = 
+      this.formBuilder.group({
+		id: new FormControl(''),  
+        cname:new FormControl (this.line.cname),
+        ctype: new FormControl(this.line.ctype),
+        reference:new FormControl (this.line.reference),
+        logic: new FormControl(this.line.logic),
+        fopconstraint:new FormControl (this.line.fopconstraint),
+        fvalue: new FormControl(this.line.fvalue),
+        sopconstraint:new FormControl (this.line.sopconstraint),
+        svalue: new FormControl(this.line.svalue),
+        mandatory: new FormControl(this.line.mandatory),
+        
+      })*/
+
     const newLine: IContestfield = {
       id: '',
+      cname: '',
       mandatory: false,
       reference: '',
       ctype: '',
-      cname: '',
       logic: '',
       fopconstraint: '',
       fvalue: '',
@@ -114,6 +140,61 @@ export class ContestUpdateComponent implements OnInit {
 
     // Add the new ContestFields line to the array
     this.contestfieldsLines.push(newLine);
+  }
+
+  save(): void {
+    this.isSaving = true;
+
+    const contest = this.contestFormService.getContest(this.editForm);
+    //const contestfield = this.contestfieldFormService.getContestfield(this.editCfForm);
+
+    if (contest.id !== null) {
+      this.subscribeToSaveResponse(this.contestService.update(contest));
+    } else {
+      /* if (this.contestfieldsLines.length??0){
+	for (let i=0;i<this.contestfieldsLines.length;i++){
+		const con : IContestfield = { 
+	  
+	  id: '', 
+      cname: '',
+      mandatory: false,
+      reference: '',
+      ctype: '',
+      logic: '',
+      fopconstraint: '',
+      fvalue: '',
+      sopconstraint: '',
+      svalue: '',
+      
+      
+    };
+		  con.cname=(this.contestfieldsLines[i].cname);
+		  con.ctype=(this.contestfieldsLines[i].ctype);
+	       con.reference=(this.contestfieldsLines[i].reference);
+	        con.mandatory=(this.contestfieldsLines[i].mandatory);
+	         con.fopconstraint=(this.contestfieldsLines[i].fopconstraint);
+	          con.fvalue=(this.contestfieldsLines[i].fvalue);
+	           con.sopconstraint=(this.contestfieldsLines[i].sopconstraint);
+	            con.svalue=(this.contestfieldsLines[i].svalue);
+	            con.logic=(this.contestfieldsLines[i].logic);
+	            
+	            //con.contest=null,
+	            //con.contest=null ;
+	          
+	            		
+	this.contestfieldsLines2.push(con);
+		console.log(this.contestfieldsLines);
+		
+	}
+     } */
+
+      contest.contestfields = this.contestfieldsLines;
+
+      this.subscribeToSaveResponse(this.contestService.create(contest));
+      //this.contestfieldsLines.push(this.line);
+      console.log(this.contestfieldsLines);
+      console.log('contest = ', contest);
+    }
   }
 
   handleContestfieldLineDeleted(index: number): void {

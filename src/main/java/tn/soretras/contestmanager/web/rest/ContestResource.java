@@ -21,8 +21,11 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 import tn.soretras.contestmanager.repository.ContestRepository;
+import tn.soretras.contestmanager.repository.ContestfieldRepository;
 import tn.soretras.contestmanager.service.ContestService;
+import tn.soretras.contestmanager.service.ContestfieldService;
 import tn.soretras.contestmanager.service.dto.ContestDTO;
+import tn.soretras.contestmanager.service.dto.ContestfieldDTO;
 import tn.soretras.contestmanager.web.rest.errors.BadRequestAlertException;
 
 /**
@@ -62,6 +65,12 @@ public class ContestResource {
             throw new BadRequestAlertException("A new contest cannot already have an ID", ENTITY_NAME, "idexists");
         }
         ContestDTO result = contestService.save(contestDTO);
+
+        /*Add By Mohamed
+        ContestfieldDTO contfdto = new ContestfieldDTO();
+        contestfieldResource.createContestfield(contfdto);
+        */
+
         return ResponseEntity
             .created(new URI("/api/contests/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId()))

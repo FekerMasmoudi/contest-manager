@@ -22,7 +22,15 @@
         <!-- ******** Modified By Mohamed ********* -->
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.cname" for="field_cname">Cname</label>
-          <input type="text" class="form-control" name="cname" id="field_cname" data-cy="cname" formControlName="cname" />
+          <input
+            type="text"
+            class="form-control"
+            name="cname"
+            id="field_cname"
+            data-cy="cname"
+            formControlName="cname"
+            [(ngModel)]="contestfieldLine.cname"
+          />
           <div *ngIf="editForm.get('cname')!.invalid && (editForm.get('cname')!.dirty || editForm.get('cname')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('cname')?.errors?.required" jhiTranslate="entity.validation.required">
               هذا الحقل مطلوب.
@@ -33,7 +41,15 @@
         <!-- ******** Modified By Mohamed ********* -->
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.ctype" for="field_ctype">Ctype</label>
-          <input type="text" class="form-control" name="ctype" id="field_ctype" data-cy="ctype" formControlName="ctype" />
+          <input
+            type="text"
+            class="form-control"
+            name="ctype"
+            id="field_ctype"
+            data-cy="ctype"
+            formControlName="ctype"
+            [(ngModel)]="contestfieldLine.ctype"
+          />
           <div *ngIf="editForm.get('ctype')!.invalid && (editForm.get('ctype')!.dirty || editForm.get('ctype')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('ctype')?.errors?.required" jhiTranslate="entity.validation.required">
               هذا الحقل مطلوب.
@@ -43,7 +59,15 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.reference" for="field_reference">Reference</label>
-          <input type="text" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+          <input
+            type="text"
+            class="form-control"
+            name="reference"
+            id="field_reference"
+            data-cy="reference"
+            formControlName="reference"
+            [(ngModel)]="contestfieldLine.reference"
+          />
           <div *ngIf="editForm.get('reference')!.invalid && (editForm.get('reference')!.dirty || editForm.get('reference')!.touched)">
             <small
               class="form-text text-danger"
@@ -57,7 +81,15 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.logic" for="field_logic">Logic</label>
-          <input type="text" class="form-control" name="logic" id="field_logic" data-cy="logic" formControlName="logic" />
+          <input
+            type="text"
+            class="form-control"
+            name="logic"
+            id="field_logic"
+            data-cy="logic"
+            formControlName="logic"
+            [(ngModel)]="contestfieldLine.logic"
+          />
           <div *ngIf="editForm.get('logic')!.invalid && (editForm.get('logic')!.dirty || editForm.get('logic')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('logic')?.errors?.required" jhiTranslate="entity.validation.required">
               هذا الحقل مطلوب.
@@ -76,6 +108,7 @@
             id="field_fopconstraint"
             data-cy="fopconstraint"
             formControlName="fopconstraint"
+            [(ngModel)]="contestfieldLine.fopconstraint"
           />
           <div
             *ngIf="
@@ -94,7 +127,15 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.fvalue" for="field_fvalue">Fvalue</label>
-          <input type="text" class="form-control" name="fvalue" id="field_fvalue" data-cy="fvalue" formControlName="fvalue" />
+          <input
+            type="text"
+            class="form-control"
+            name="fvalue"
+            id="field_fvalue"
+            data-cy="fvalue"
+            formControlName="fvalue"
+            [(ngModel)]="contestfieldLine.fvalue"
+          />
           <div *ngIf="editForm.get('fvalue')!.invalid && (editForm.get('fvalue')!.dirty || editForm.get('fvalue')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('fvalue')?.errors?.required" jhiTranslate="entity.validation.required">
               هذا الحقل مطلوب.
@@ -113,12 +154,21 @@
             id="field_sopconstraint"
             data-cy="sopconstraint"
             formControlName="sopconstraint"
+            [(ngModel)]="contestfieldLine.sopconstraint"
           />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestfield.svalue" for="field_svalue">Svalue</label>
-          <input type="text" class="form-control" name="svalue" id="field_svalue" data-cy="svalue" formControlName="svalue" />
+          <input
+            type="text"
+            class="form-control"
+            name="svalue"
+            id="field_svalue"
+            data-cy="svalue"
+            formControlName="svalue"
+            [(ngModel)]="contestfieldLine.svalue"
+          />
         </div>
 
         <div class="row mb-3">

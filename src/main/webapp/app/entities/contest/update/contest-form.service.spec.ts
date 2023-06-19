@@ -30,6 +30,7 @@ describe('Contest Form Service', () => {
             grade: expect.any(Object),
             speciality: expect.any(Object),
             sector: expect.any(Object),
+            contestfields: expect.any(Object),
           })
         );
       });
@@ -50,6 +51,7 @@ describe('Contest Form Service', () => {
             grade: expect.any(Object),
             speciality: expect.any(Object),
             sector: expect.any(Object),
+            contestfields: expect.any(Object),
           })
         );
       });
