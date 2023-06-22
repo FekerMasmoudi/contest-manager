@@ -68,9 +68,7 @@ export class ContestfieldFormService {
       }),
       sopconstraint: new FormControl(contestfieldRawValue.sopconstraint),
       svalue: new FormControl(contestfieldRawValue.svalue),
-      contest: new FormControl(contestfieldRawValue.contest, {
-        validators: [Validators.required],
-      }),
+      contest: new FormControl(contestfieldRawValue.contest, ),
     });
   }
 

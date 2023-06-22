@@ -20,18 +20,21 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.contest" for="field_contest">Contest</label>
-          <select
+          <select 
             class="form-select"
             id="field_contest"
             data-cy="contest"
             name="contest"
             formControlName="contest"
             [compareWith]="compareContest"
+            [(ngModel)]="choseobj"
+            (ngModelChange)="Onchange()"
           >
             <option *ngIf="!editForm.get('contest')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار المنــاظرة --</option>
-            <option [ngValue]="contestOption" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.name }}</option>
+            <option [ngValue]="contestOption.id" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.name }}</option>
           </select>
         </div>
+        {{choseobj|json}}
         <div *ngIf="editForm.get(['contest'])!.invalid && (editForm.get(['contest'])!.dirty || editForm.get(['contest'])!.touched)">
           <small
             class="form-text text-danger"
@@ -44,17 +47,47 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.user" for="field_user">User</label>
-          <select class="form-select" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+          <select [(ngModel)]="user"class="form-select" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
             <option *ngIf="!editForm.get('user')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار المستخدم --</option>
-            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+            <option [ngValue]="userOption.id" *ngFor="let userOption of usersSharedCollection">{{ userOption }}</option>
           </select>
         </div>
+       
         <div *ngIf="editForm.get(['user'])!.invalid && (editForm.get(['user'])!.dirty || editForm.get(['user'])!.touched)">
           <small class="form-text text-danger" *ngIf="editForm.get(['user'])?.errors?.required" jhiTranslate="entity.validation.required">
             هذا الحقل مطلوب.
           </small>
         </div>
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.icontestfield" for="field_icontestfield">Icontestfield</label>
+          <select class="form-select" id="field_icontestfield" data-cy="icontestfield" name="icontestfield" formControlName="icontestfield" >
+            <option *ngIf="!editForm.get('contest')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار المستخدم --</option>
+            <option [ngValue]="userOption.id" *ngFor="let userOption of listContestfield">{{ userOption.cname }}</option>
+          </select>
+        </div>
+      
+        <div *ngIf="editForm.get(['contest'])!.invalid && (editForm.get(['contest'])!.dirty || editForm.get(['contest'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['contest'])?.errors?.required" jhiTranslate="entity.validation.required">
+            هذا الحقل مطلوب.
+          </small>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.icontestfield" for="field_icontestfield">TypeInput</label>
+          <select class="form-select" id="field_icontestfield" data-cy="icontestfield" name="icontestfield" formControlName="icontestfield" >
+            <option *ngIf="!editForm.get('contest')!.value" [ngValue]="null" selected>-- الرّجـاء إختيـار المستخدم --</option>
+            <option [ngValue]="userOption.id" *ngFor="let userOption of listOptions">{{ userOption.name }}</option>
+          </select>
+        </div>
+      
+        <div *ngIf="editForm.get(['contest'])!.invalid && (editForm.get(['contest'])!.dirty || editForm.get(['contest'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['contest'])?.errors?.required" jhiTranslate="entity.validation.required">
+            هذا الحقل مطلوب.
+          </small>
+        </div>
+     
+  
       </div>
+      
 
       <div>
         <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
@@ -74,3 +107,4 @@
     </form>
   </div>
 </div>
+<div ngDraggable class="drag-block-sm">Drag Me!</div>
