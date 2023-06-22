@@ -6,11 +6,11 @@ import { ContestformUpdateComponent } from './update/contestform-update.componen
 import { ContestformDeleteDialogComponent } from './delete/contestform-delete-dialog.component';
 import { ContestformRoutingModule } from './route/contestform-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AngularDraggableModule } from 'angular2-draggable';
 
 
 @NgModule({
-  imports: [SharedModule, ContestformRoutingModule,ReactiveFormsModule,FormsModule],
+  imports: [SharedModule, ContestformRoutingModule,ReactiveFormsModule,FormsModule,AngularDraggableModule],
   declarations: [ContestformComponent, ContestformDetailComponent, ContestformUpdateComponent, ContestformDeleteDialogComponent],
 })
 export class ContestformModule {}
