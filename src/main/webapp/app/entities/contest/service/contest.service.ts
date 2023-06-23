@@ -23,7 +23,7 @@ export type EntityResponseTypeCf = HttpResponse<IContestfield>;
 @Injectable({ providedIn: 'root' })
 export class ContestService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/contests');
-
+  var1: IContestfield[] | undefined | null;
   //Modified By Mohamed
 
   protected resourceUrlCf = this.applicationConfigService.getEndpointFor('api/contestfields');
@@ -33,20 +33,7 @@ export class ContestService {
     protected applicationConfigService: ApplicationConfigService,
     protected cons1: ContestfieldService
   ) {}
-  /* createTwo(contest: NewContest, groupe1: any, id1?: any): void {
-    console.log('out for' + id1);
-    if (groupe1 != null && groupe1 != undefined) {
-      console.log('out for' + id1);
 
-      for (let i = 0; i < groupe1.length; i++) {
-        groupe1[i].contest.id = id1;
-
-        this.http.post<IContestfield>(this.resourceUrlCf, groupe1[i], { observe: 'response' }).subscribe(result => {
-          console.log(result.body?.id);
-        });
-      }
-    }
-  }*/
   create(contest: NewContest): Observable<EntityResponseType> {
     if (contest.contestfields?.length)
       for (let i = 0; i < contest.contestfields.length; i++) {
@@ -75,7 +62,11 @@ export class ContestService {
   }
 
   find(id: string): Observable<EntityResponseType> {
-    return this.http.get<IContest>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http.get<IContest>(`${this.resourceUrl}/${id}`, { observe: 'response' }).pipe(
+      tap(data => {
+        this.var1 = data.body?.contestfields;
+      })
+    );
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

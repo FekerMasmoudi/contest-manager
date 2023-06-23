@@ -221,6 +221,13 @@ public class ContestService {
                 String idcontest_sector = contestList.get(i).getSector().getId();
                 SectorDTO sectordto = sectorRepository.findById(idcontest_sector).map(sectorMapper::toDto).orElse(null);
                 contestList.get(i).setSector(sectordto);
+
+                //for contestfields
+                String idcontf = contestList.get(i).getId();
+                Optional<ContestDTO> contdto = contestRepository.findById(idcontf).map(contestMapper::toDto);
+                List<ContestfieldDTO> listcf = contestfieldRepository.findByContest(contestMapper.toEntity(contdto.get()));
+                Set<ContestfieldDTO> cfdto = new HashSet<>(listcf);
+                contestList.get(i).setContestfields(cfdto);
             }
             Long total = (long) contestList.size();
             Page<ContestDTO> pages = new PageImpl<ContestDTO>(contestList, pageable, total);
@@ -236,7 +243,12 @@ public class ContestService {
      */
     public Optional<ContestDTO> findOne(String id) {
         log.debug("Request to get Contest : {}", id);
-        return contestRepository.findById(id).map(contestMapper::toDto);
+        Optional<ContestDTO> ocdto = contestRepository.findById(id).map(contestMapper::toDto);
+        List<ContestfieldDTO> lcfdto = contestfieldRepository.findByContest(contestMapper.toEntity(ocdto.get()));
+        Set<ContestfieldDTO> cfdto = new HashSet<>(lcfdto);
+        ocdto.get().setContestfields(cfdto);
+
+        return ocdto;
         /*Modified By Mohamed
 
         Optional<ContestDTO> pcdto = contestRepository.findById(id).map(contestMapper::toDto);

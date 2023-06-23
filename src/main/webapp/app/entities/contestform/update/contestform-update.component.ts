@@ -11,6 +11,9 @@ import { IContest } from 'app/entities/contest/contest.model';
 import { ContestService } from 'app/entities/contest/service/contest.service';
 import { IUser } from 'app/entities/user/user.model';
 import { UserService } from 'app/entities/user/user.service';
+import { IContestfield } from 'app/entities/contestfield/contestfield.model';
+import { ContestfieldService } from 'app/entities/contestfield/service/contestfield.service';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'jhi-contestform-update',
@@ -21,16 +24,45 @@ export class ContestformUpdateComponent implements OnInit {
   contestform: IContestform | null = null;
 
   contestsSharedCollection: IContest[] = [];
-  usersSharedCollection: IUser[] = [];
 
+  // Add list of contestfields
+
+  contestfields: IContestfield[] = [];
+
+  usersSharedCollection: IUser[] = [];
+  code: any[] = [];
+  arrayField: FormGroup[] = [];
   editForm: ContestformFormGroup = this.contestformFormService.createContestformFormGroup();
+  contest: IContest[] = [];
+
+  fieldobj: any;
+  conobj: any;
+  fields!: FormGroup;
+  propField!: FormGroup;
+  listobject: any[] = [
+    { id: '1', type: 'TEXT' },
+    { id: '2', type: 'DATE' },
+    { id: '3', type: 'IMAGE' },
+    { id: '4', type: 'FILE' },
+    { id: '5', type: 'NUMBER' },
+    { id: '6', type: 'CHECKBOX' },
+    { id: '7', type: 'RADIOBOX' },
+    { id: '8', type: 'SUBMIT' },
+    { id: '9', type: 'TEL' },
+    { id: '10', type: 'PASSWORD' },
+    { id: '11', type: 'EMAIL' },
+  ];
+
+  contestfield: IContestfield[] | null | undefined;
 
   constructor(
     protected contestformService: ContestformService,
     protected contestformFormService: ContestformFormService,
     protected contestService: ContestService,
     protected userService: UserService,
-    protected activatedRoute: ActivatedRoute
+    protected activatedRoute: ActivatedRoute,
+    protected contestfieldService: ContestfieldService,
+    protected formbuilder: FormBuilder
   ) {}
 
   compareContest = (o1: IContest | null, o2: IContest | null): boolean => this.contestService.compareContest(o1, o2);
@@ -60,6 +92,28 @@ export class ContestformUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.contestformService.create(contestform));
     }
+  }
+
+  OnChangeField(): void {
+    if (this.fieldobj != null && this.fieldobj != undefined) {
+      this.propField = this.formbuilder.group({
+        name: this.fieldobj,
+        type: '',
+        start: '',
+        end: '',
+      });
+      this.arrayField.push(this.propField);
+      console.log(this.fieldobj);
+    }
+  }
+  OnChange(): void {
+    //let contest:IContest= this.contest.value;
+
+    for (let i = 0; i < this.contestsSharedCollection.length; i++) {
+      if (this.contestsSharedCollection[i].id == this.conobj) this.contestfield = this.contestsSharedCollection[i].contestfields;
+    }
+    //console.log(contest.name);
+    this.fields.addControl('fname', new FormControl('', Validators.required));
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IContestform>>): void {

@@ -5,9 +5,10 @@ import { ContestformDetailComponent } from './detail/contestform-detail.componen
 import { ContestformUpdateComponent } from './update/contestform-update.component';
 import { ContestformDeleteDialogComponent } from './delete/contestform-delete-dialog.component';
 import { ContestformRoutingModule } from './route/contestform-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [SharedModule, ContestformRoutingModule],
+  imports: [SharedModule, ContestformRoutingModule, FormsModule],
   declarations: [ContestformComponent, ContestformDetailComponent, ContestformUpdateComponent, ContestformDeleteDialogComponent],
 })
 export class ContestformModule {}
