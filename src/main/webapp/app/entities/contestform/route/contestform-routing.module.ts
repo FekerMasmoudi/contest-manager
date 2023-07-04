@@ -7,6 +7,8 @@ import { ContestformDetailComponent } from '../detail/contestform-detail.compone
 import { ContestformUpdateComponent } from '../update/contestform-update.component';
 import { ContestformRoutingResolveService } from './contestform-routing-resolve.service';
 import { ASC } from 'app/config/navigation.constants';
+import { ListfieldsModule } from '../contestformdraggable/listfields/listfields.module';
+import { CreateComponent } from '../contestformdraggable/listfields/create.component';
 
 const contestformRoute: Routes = [
   {
@@ -36,6 +38,15 @@ const contestformRoute: Routes = [
   {
     path: ':id/edit',
     component: ContestformUpdateComponent,
+    resolve: {
+      contestform: ContestformRoutingResolveService,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+
+  {
+    path: 'contestformdraggable/create',
+    component: CreateComponent,
     resolve: {
       contestform: ContestformRoutingResolveService,
     },

@@ -7,8 +7,16 @@ import { ContestformDeleteDialogComponent } from './delete/contestform-delete-di
 import { ContestformRoutingModule } from './route/contestform-routing.module';
 import { FormsModule } from '@angular/forms';
 
+import { ContestformdraggableComponent } from './contestformdraggable/contestformdraggable/contestformdraggable.component';
+
 @NgModule({
   imports: [SharedModule, ContestformRoutingModule, FormsModule],
-  declarations: [ContestformComponent, ContestformDetailComponent, ContestformUpdateComponent, ContestformDeleteDialogComponent],
+  declarations: [
+    ContestformComponent,
+    ContestformDetailComponent,
+    ContestformUpdateComponent,
+    ContestformDeleteDialogComponent,
+    ContestformdraggableComponent,
+  ],
 })
 export class ContestformModule {}

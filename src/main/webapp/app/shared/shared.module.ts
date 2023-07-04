@@ -13,6 +13,9 @@ import { SortByDirective } from './sort/sort-by.directive';
 import { SortDirective } from './sort/sort.directive';
 import { ItemCountComponent } from './pagination/item-count.component';
 import { FilterComponent } from './filter/filter.component';
+import { MaterialModule } from './material/material.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [SharedLibsModule],
@@ -44,6 +47,9 @@ import { FilterComponent } from './filter/filter.component';
     SortDirective,
     ItemCountComponent,
     FilterComponent,
+    MaterialModule,
+    DragDropModule,
+    MatIconModule,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  width: 1400px;
+  height: 900px;
+}
+
+.example {
+  border: solid 1px;
+  width: 1000px;
+  height: 600px;
+  bottom: 20px;
+  margin-right: 600px;
+  flex-direction: column;
+  padding-right: 20px;
+}
+
+.example-button-row1 {
+  display: table-cell;
+  width: 600px;
+}
+.col-2 {
+  margin-right: 0px;
+}
+button {
+  width: 100px;
+}
+.row mb-3 {
+  padding-right: 20px;
+}
+
+mat-datepicker-toggle {
+  color: white;
+}

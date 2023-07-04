@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-2">
+    <div class="row mb-3">
+      <button cdkDrag (click)="addField()" mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>Text</mat-icon>
+      </button>
+    </div>
+    <div class="row mb-3">
+      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+        <mat-datepicker-toggle></mat-datepicker-toggle>
+      </button>
+    </div>
+    <div class="row mb-3">
+      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>checkbox</mat-icon>
+      </button>
+    </div>
+    <div class="row mb-3">
+      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>email</mat-icon>
+      </button>
+    </div>
+    <div class="row mb-3">
+      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>phone</mat-icon>
+      </button>
+    </div>
+    <div class="row mb-3">
+      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+    <div class="row mb-3">
+      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>password</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="example">
+    <div *ngFor="let cndp of arrayInput; let i = index">
+      <jhi-inputtext [textInput]="cndp" [index]="i" (contestfieldLineDeleted)="deletehandlerInput($event)"> </jhi-inputtext>
+    </div>
+  </div>
+</div>
