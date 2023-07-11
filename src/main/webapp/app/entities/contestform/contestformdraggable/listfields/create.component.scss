@@ -1,33 +1,41 @@
 .container {
-  display: flex;
-  width: 1400px;
-  height: 900px;
-}
-
-.example {
-  border: solid 1px;
-  width: 1000px;
-  height: 600px;
-  bottom: 20px;
-  margin-right: 600px;
-  flex-direction: column;
-  padding-right: 20px;
-}
-
-.example-button-row1 {
-  display: table-cell;
-  width: 600px;
-}
-.col-2 {
-  margin-right: 0px;
-}
-button {
-  width: 100px;
-}
-.row mb-3 {
-  padding-right: 20px;
+  width: 1200px;
+  height: 700px;
 }
 
 mat-datepicker-toggle {
   color: white;
+}
+
+.col-2 {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 1px;
+  padding: 10px;
+  border: 1px dashed;
+  margin: 20px 1010px;
+}
+
+.col-2 > div {
+  text-align: center;
+}
+
+.example {
+  margin-top: -416px;
+  border: dashed 1px;
+  width: 1000px;
+  height: 650px;
+
+  padding-right: 20px;
+}
+
+.imgdrag {
+  text-align: center;
+  font-size: 25px;
+  font-style: normal;
+  margin-top: 275px;
+}
+
+button {
+  cursor: move;
 }

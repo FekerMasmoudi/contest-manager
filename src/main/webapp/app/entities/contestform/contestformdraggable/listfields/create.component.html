@@ -1,17 +1,42 @@
 <div class="container">
   <div class="col-2">
-    <div class="row mb-3">
-      <button cdkDrag (click)="addField()" mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+    <div class="row mb-3" (dragstart)="ondragStarted()">
+      <button
+        (dragend)="addField()"
+        draggable="true"
+        ondragstart="drag(event)"
+        id="drag2"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+      >
         <mat-icon>Text</mat-icon>
       </button>
     </div>
+
     <div class="row mb-3">
-      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+      <button
+        (dragend)="addFieldDate()"
+        draggable="true"
+        ondragstart="drag(event)"
+        id="drag1"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+      >
         <mat-datepicker-toggle></mat-datepicker-toggle>
       </button>
     </div>
     <div class="row mb-3">
-      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+      <button
+        (dragend)="addFieldCheckbox()"
+        draggable="true"
+        ondragstart="drag(event)"
+        id="drag1"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+      >
         <mat-icon>checkbox</mat-icon>
       </button>
     </div>
@@ -38,8 +63,38 @@
   </div>
 
   <div class="example">
+    <div class="imgdrag" *ngIf="arrayInput.length == 0 && arrayDatepicker.length == 0 && arrayCheckbox.length == 0">
+      <img src="../../../../../content/images/drag&drop.png" alt="drag&drop" width="20px" height="20px" />
+      <b>&nbsp;أنقــل الحقـــول هـنـا&nbsp;</b>
+    </div>
+    <div class="grid-item" cdkDrag ondrop="drop(event)" ondragover="allowDrop(event)" hidden>1</div>
     <div *ngFor="let cndp of arrayInput; let i = index">
-      <jhi-inputtext [textInput]="cndp" [index]="i" (contestfieldLineDeleted)="deletehandlerInput($event)"> </jhi-inputtext>
+      <jhi-inputtext [textInput]="cndp" [index]="i" (contestfieldLineDeleted)="deletehandlerInput($event)" [contestFieldID]="contfId">
+      </jhi-inputtext>
+    </div>
+
+    <!-- ****Modified By MOHAMED  -->
+    <div *ngIf="arrayDatepicker.length != 0"></div>
+    <div class="grid-item" cdkDrag ondrop="drop(event)" ondragover="allowDrop(event)" hidden>1</div>
+    <div *ngFor="let cfdate of arrayDatepicker; let i = index">
+      <jhi-datepicker
+        [textDatepicker]="cfdate"
+        [index]="i"
+        (contestfieldLineDeleted)="deletehandlerDate($event)"
+        [contestFieldID]="contfId"
+      ></jhi-datepicker>
+    </div>
+
+    <!-- ****Modified By MOHAMED  -->
+    <div *ngIf="arrayCheckbox.length != 0"></div>
+    <div class="grid-item" cdkDrag ondrop="drop(event)" ondragover="allowDrop(event)" hidden>1</div>
+    <div *ngFor="let cfcheckbox of arrayCheckbox; let i = index">
+      <jhi-checkbox
+        [textCheckbox]="cfcheckbox"
+        [index]="i"
+        (contestfieldLineDeleted)="deletehandlerCheckbox($event)"
+        [contestFieldID]="contfId"
+      ></jhi-checkbox>
     </div>
   </div>
 </div>

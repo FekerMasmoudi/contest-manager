@@ -4,8 +4,11 @@
 
   <br />
 
-  <mat-form-field class="example-form-field">
-    <mat-label jhiTranslate="contestmanagerdbApp.contest.parent">Name</mat-label>
-    <input matInput type="text" placeholder="Name" />
+  <mat-form-field>
+    <mat-label>التـاريـخ</mat-label>
+    <input matInput [matDatepicker]="picker" />
+    <mat-hint></mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 </form>

@@ -31,7 +31,7 @@
             (ngModelChange)="OnChange()"
           >
             <option [ngValue]="null" *ngIf="!editForm.get('contest')!.value" selected>-- الرّجـاء إختيـار المنــاظرة --</option>
-            <option [ngValue]="contestOption.id" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.name }}</option>
+            <option [ngValue]="contestOption" *ngFor="let contestOption of contestsSharedCollection">{{ contestOption.name }}</option>
           </select>
         </div>
         <div *ngIf="editForm.get(['contest'])!.invalid && (editForm.get(['contest'])!.dirty || editForm.get(['contest'])!.touched)">
@@ -44,7 +44,7 @@
           </small>
         </div>
 
-        <!--***** Modified By Mohamed -->
+        <!--***** Modified By Mohamed 
 
         <div class="row mb-3" *ngIf="editForm.get('contest')!.value">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.contestfield" for="field_contest">Contest Field</label>
@@ -62,16 +62,18 @@
               {{ fieldOption.cname }}
             </option>
           </select>
-        </div>
+        </div> -->
 
         <!--***** Modified By Mohamed -->
-
-        <!-- **** Modified By Mohamed *****-->
+        <div *ngIf="editForm.get('contest')!.value" class="row mb-3">
+          <jhi-contestformdraggable [contfdInput]="conobj"> </jhi-contestformdraggable>
+        </div>
+        <!-- **** Modified By Mohamed *****
 
         <div class="col-12">
           <form name="fields" role="form" novalidate (ngSubmit)="save()" [formGroup]="fields">
             <div *ngFor="let type of arrayField">
-              <!--change-->
+              
               <div class="row">
                 <div class="col-3" *ngIf="editForm.get('contest')!.value">
                   <label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.typecontestfield" for="field_contest"
@@ -100,7 +102,7 @@
               </div>
             </div>
           </form>
-        </div>
+        </div> -->
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.user" for="field_user">User</label>
@@ -124,9 +126,11 @@
         <button
           type="submit"
           id="save-entity"
+          value="save"
           data-cy="entityCreateSaveButton"
           [disabled]="editForm.invalid || isSaving"
           class="btn btn-primary"
+          #test
         >
           <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">حفظ</span>
         </button>

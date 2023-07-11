@@ -1,0 +1,32 @@
+<!-- ***** Modified by Mohamed **** -->
+<h1 mat-dialog-title>{{ data.name }}</h1>
+<div mat-dialog-content>
+  <p>تحييـن إعـددات الحقـل</p>
+  <mat-form-field hidden>
+    <mat-label>Code</mat-label>
+    <input matInput [(ngModel)]="data.code" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>إسـم الحقل</mat-label>
+    <input matInput [(ngModel)]="data.name" />
+  </mat-form-field>
+
+  <!--{{test[0].cname}}-->
+
+  <mat-form-field>
+    <mat-label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.contestfield" for="field_contest"
+      >حقـول المنــاظرة</mat-label
+    >
+    <mat-select>
+      <mat-option [value]="null" selected>-- الرّجـاء إختيـار المنــاظرة --</mat-option>
+      <mat-option *ngFor="let c of test">
+        {{ c.cname }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">إلغـاء</button>
+  <button mat-button [mat-dialog-close]="data.type" cdkFocusInitial>حفـظ</button>
+</div>

@@ -43,7 +43,7 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/angular2-draggable/css/resizable.min.css"
             ],
-            "scripts": []
+            "scripts": ["src/main/webapp/content/js/test.js"]
           },
           "configurations": {
             "production": {

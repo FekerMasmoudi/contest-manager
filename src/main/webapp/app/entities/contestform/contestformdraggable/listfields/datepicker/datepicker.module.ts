@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InputtextComponent } from './inputtext/inputtext.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from 'app/shared/shared.module';
@@ -11,6 +11,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogoverviewComponent } from './dialogoverview/dialogoverview.component';
 import { DialogoverviewModule } from './dialogoverview/dialogoverview.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
 const MaterialComponents = [MatButtonModule, MatIconModule, MatButtonToggleModule, MatFormFieldModule];
 
 @NgModule({
@@ -19,4 +20,4 @@ const MaterialComponents = [MatButtonModule, MatIconModule, MatButtonToggleModul
 
   exports: [MaterialComponents],
 })
-export class InputtextModule {}
+export class DatepickerModule {}

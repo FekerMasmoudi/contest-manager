@@ -9,6 +9,7 @@ import { ContestformRoutingResolveService } from './contestform-routing-resolve.
 import { ASC } from 'app/config/navigation.constants';
 import { ListfieldsModule } from '../contestformdraggable/listfields/listfields.module';
 import { CreateComponent } from '../contestformdraggable/listfields/create.component';
+import { ListfieldsComponent } from '../contestformdraggable/listfields/listfields.component';
 
 const contestformRoute: Routes = [
   {

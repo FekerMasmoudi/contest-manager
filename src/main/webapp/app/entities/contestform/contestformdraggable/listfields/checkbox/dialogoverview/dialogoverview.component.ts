@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Modelinput } from '../modelinput';
+import { Checkbox } from '../checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +18,7 @@ import { CommonModule, NgIf } from '@angular/common';
   imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, CommonModule, MatSelectModule],
 })
 export class DialogoverviewComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<DialogoverviewComponent>, @Inject(MAT_DIALOG_DATA) public data: Modelinput) {}
+  constructor(public dialogRef: MatDialogRef<DialogoverviewComponent>, @Inject(MAT_DIALOG_DATA) public data: Checkbox) {}
   test: IContestfield[] = [];
   ngOnInit(): void {
     if (this.data?.contestinput?.contestfields) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,6 +14,8 @@ import { UserService } from 'app/entities/user/user.service';
 import { IContestfield } from 'app/entities/contestfield/contestfield.model';
 import { ContestfieldService } from 'app/entities/contestfield/service/contestfield.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ContestformdraggableComponent } from '../contestformdraggable/contestformdraggable/contestformdraggable.component';
+import { InputtextComponent } from '../contestformdraggable/listfields/inputtext/inputtext/inputtext.component';
 
 @Component({
   selector: 'jhi-contestform-update',
@@ -26,6 +28,7 @@ export class ContestformUpdateComponent implements OnInit {
   contestsSharedCollection: IContest[] = [];
 
   // Add list of contestfields
+  @ViewChild(ContestformdraggableComponent) t!: ContestformdraggableComponent;
 
   contestfields: IContestfield[] = [];
 
@@ -36,7 +39,7 @@ export class ContestformUpdateComponent implements OnInit {
   contest: IContest[] = [];
 
   fieldobj: any;
-  conobj: any;
+  conobj!: IContest;
   fields!: FormGroup;
   propField!: FormGroup;
   listobject: any[] = [
@@ -94,7 +97,7 @@ export class ContestformUpdateComponent implements OnInit {
     }
   }
 
-  OnChangeField(): void {
+  /* OnChangeField(): void {
     if (this.fieldobj != null && this.fieldobj != undefined) {
       this.propField = this.formbuilder.group({
         name: this.fieldobj,
@@ -105,15 +108,16 @@ export class ContestformUpdateComponent implements OnInit {
       this.arrayField.push(this.propField);
       console.log(this.fieldobj);
     }
-  }
+  }*/
   OnChange(): void {
     //let contest:IContest= this.contest.value;
 
-    for (let i = 0; i < this.contestsSharedCollection.length; i++) {
+    /*   for (let i = 0; i < this.contestsSharedCollection.length; i++) {
       if (this.contestsSharedCollection[i].id == this.conobj) this.contestfield = this.contestsSharedCollection[i].contestfields;
-    }
-    //console.log(contest.name);
-    this.fields.addControl('fname', new FormControl('', Validators.required));
+    }*/
+    console.log(this.conobj);
+
+    //this.fields.addControl('fname', new FormControl('', Validators.required));
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IContestform>>): void {
