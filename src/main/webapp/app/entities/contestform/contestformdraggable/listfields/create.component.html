@@ -14,7 +14,7 @@
       </button>
     </div>
 
-    <div class="row mb-3">
+    <div class="row mb-3" (dragstart)="ondragStarted()">
       <button
         (dragend)="addFieldDate()"
         draggable="true"
@@ -27,7 +27,7 @@
         <mat-datepicker-toggle></mat-datepicker-toggle>
       </button>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-3" (dragstart)="ondragStarted()">
       <button
         (dragend)="addFieldCheckbox()"
         draggable="true"
@@ -40,30 +40,85 @@
         <mat-icon>checkbox</mat-icon>
       </button>
     </div>
-    <div class="row mb-3">
-      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+    <div class="row mb-3" (dragstart)="ondragStarted()">
+      <button
+        (dragend)="addFieldEmailinput()"
+        draggable="true"
+        ondragstart="drag(event)"
+        id="drag2"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+      >
         <mat-icon>email</mat-icon>
       </button>
     </div>
-    <div class="row mb-3">
-      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+    <div class="row mb-3" (dragstart)="ondragStarted()">
+      <button
+        (dragend)="addFieldInputphone()"
+        draggable="true"
+        ondragstart="drag(event)"
+        id="drag2"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+      >
         <mat-icon>phone</mat-icon>
       </button>
     </div>
-    <div class="row mb-3">
-      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+    <div class="row mb-3" (dragstart)="ondragStarted()">
+      <button
+        (dragend)="addFieldTextarea()"
+        draggable="true"
+        ondragstart="drag(event)"
+        id="drag2"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+      >
         <mat-icon>home</mat-icon>
       </button>
     </div>
-    <div class="row mb-3">
-      <button mat-raised-button color="primary" aria-label="Example icon button with a menu icon">
+    <div class="row mb-3" (dragstart)="ondragStarted()">
+      <button
+        (dragend)="addFieldPasswordinput()"
+        draggable="true"
+        ondragstart="drag(event)"
+        id="drag2"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+        mat-raised-button
+        color="primary"
+        aria-label="Example icon button with a menu icon"
+      >
         <mat-icon>password</mat-icon>
       </button>
     </div>
   </div>
 
   <div class="example">
-    <div class="imgdrag" *ngIf="arrayInput.length == 0 && arrayDatepicker.length == 0 && arrayCheckbox.length == 0">
+    <div
+      class="imgdrag"
+      *ngIf="
+        arrayInput.length == 0 &&
+        arrayDatepicker.length == 0 &&
+        arrayCheckbox.length == 0 &&
+        arrayEmailinput.length == 0 &&
+        arrayInputtextarea.length == 0 &&
+        arrayPasswordinput.length == 0 &&
+        arrayInputphone.length == 0
+      "
+    >
       <img src="../../../../../content/images/drag&drop.png" alt="drag&drop" width="20px" height="20px" />
       <b>&nbsp;أنقــل الحقـــول هـنـا&nbsp;</b>
     </div>
@@ -96,5 +151,54 @@
         [contestFieldID]="contfId"
       ></jhi-checkbox>
     </div>
+    <!-- ****Modified By MOHAMED  -->
+    <div *ngIf="arrayEmailinput.length != 0"></div>
+    <div class="grid-item" cdkDrag ondrop="drop(event)" ondragover="allowDrop(event)" hidden>1</div>
+    <div *ngFor="let cfemail of arrayEmailinput; let i = index">
+      <jhi-emailinput
+        [textEmailInput]="cfemail"
+        [index]="i"
+        (contestfieldLineDeleted)="deletehandlerEmailinput($event)"
+        [contestFieldID]="contfId"
+      ></jhi-emailinput>
+    </div>
+    <!-- ****Modified By MOHAMED  -->
+    <div *ngIf="arrayInputtextarea.length != 0"></div>
+    <div class="grid-item" cdkDrag ondrop="drop(event)" ondragover="allowDrop(event)" hidden>1</div>
+    <div *ngFor="let cftextarea of arrayInputtextarea; let i = index">
+      <jhi-inputtextarea
+        [textInputarea]="cftextarea"
+        [index]="i"
+        (contestfieldLineDeleted)="deletehandlerInputtextarea($event)"
+        [contestFieldID]="contfId"
+      ></jhi-inputtextarea>
+    </div>
+    <!-- ****Modified By MOHAMED  -->
+    <div *ngIf="arrayInputphone.length != 0"></div>
+    <div class="grid-item" cdkDrag ondrop="drop(event)" ondragover="allowDrop(event)" hidden>1</div>
+    <div *ngFor="let cfphone of arrayInputphone; let i = index">
+      <jhi-inputphone
+        [phoneInput]="cfphone"
+        [index]="i"
+        (contestfieldLineDeleted)="deletehandlerInputphone($event)"
+        [contestFieldID]="contfId"
+      ></jhi-inputphone>
+    </div>
+    <!-- ****Modified By MOHAMED  -->
+    <div *ngIf="arrayPasswordinput.length != 0"></div>
+    <div class="grid-item" cdkDrag ondrop="drop(event)" ondragover="allowDrop(event)" hidden>1</div>
+    <div *ngFor="let cfpassword of arrayPasswordinput; let i = index">
+      <jhi-passwordinput
+        [passwordInput]="cfpassword"
+        [index]="i"
+        (contestfieldLineDeleted)="deletehandlerPasswordinput($event)"
+        [contestFieldID]="contfId"
+      ></jhi-passwordinput>
+    </div>
+  </div>
+  <div>
+    <button mat-raised-button color="warn" class="maincursor">إلغـاء</button>
+    <button mat-raised-button color="primary" type="button" class="maincursor" (click)="saveHTML()">حفـظ</button>
+    <button mat-raised-button color="primary" type="button" class="maincursor" (click)="showDialog()">SHOW</button>
   </div>
 </div>

@@ -12,6 +12,8 @@ public class ContestformDTO implements Serializable {
 
     private String id;
 
+    private String formarray;
+
     private ContestDTO contest;
 
     private UserDTO user;
@@ -22,6 +24,14 @@ public class ContestformDTO implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFormarray() {
+        return formarray;
+    }
+
+    public void setFormarray(String formarray) {
+        this.formarray = formarray;
     }
 
     public ContestDTO getContest() {
@@ -61,13 +71,10 @@ public class ContestformDTO implements Serializable {
         return Objects.hash(this.id);
     }
 
-    // prettier-ignore
     @Override
     public String toString() {
-        return "ContestformDTO{" +
-            "id='" + getId() + "'" +
-            ", contest=" + getContest() +
-            ", user=" + getUser() +
-            "}";
+        return "ContestformDTO [id=" + id + ", formarray=" + formarray + ", contest=" + contest + ", user=" + user + "]";
     }
+    // prettier-ignore
+
 }

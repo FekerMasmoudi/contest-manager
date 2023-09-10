@@ -11,7 +11,7 @@ export interface IContestfield {
   fvalue?: string | null;
   sopconstraint?: string | null;
   svalue?: string | null;
-  contest?: Pick<IContest, 'id'> | null;
+  contest?: Pick<IContest, 'id' | 'name'> | null;
 }
 
 export type NewContestfield = Omit<IContestfield, 'id'> & { id: null };

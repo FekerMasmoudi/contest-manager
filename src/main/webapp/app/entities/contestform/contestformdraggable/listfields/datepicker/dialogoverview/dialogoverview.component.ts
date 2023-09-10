@@ -19,14 +19,29 @@ import { CommonModule, NgIf } from '@angular/common';
 })
 export class DialogoverviewComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogoverviewComponent>, @Inject(MAT_DIALOG_DATA) public data: Datepicker) {}
+  datacopy1!: Datepicker;
+  domwidth: any = this.data.positionInput?.width;
+  domheight: any = this.data.positionInput?.height;
   test: IContestfield[] = [];
   ngOnInit(): void {
     if (this.data?.contestinput?.contestfields) {
       for (let i = 0; i < this.data?.contestinput?.contestfields.length; i++) this.test[i] = this.data?.contestinput?.contestfields[i];
     }
+    const datacopy: Datepicker = this.data;
+    this.datacopy1 = datacopy;
+    console.log(this.data.placeholder);
+    //alert(this.data.positionInput?.x);
+  }
+  onNoClick(): void {
+    this.data = this.datacopy1;
+    this.dialogRef.close();
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onChange(event: IContestfield): void {
+    console.log(event.cname);
+  }
+  onChange1(event: any): void {
+    this.data.positionInput!.width = this.domwidth;
+    this.data.positionInput!.height = this.domheight;
   }
 }

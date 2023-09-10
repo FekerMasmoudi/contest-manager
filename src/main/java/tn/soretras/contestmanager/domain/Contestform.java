@@ -29,6 +29,9 @@ public class Contestform implements Serializable {
     @Field("user")
     private User user;
 
+    @Field("form_array")
+    private String formarray;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public String getId() {
@@ -72,6 +75,14 @@ public class Contestform implements Serializable {
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
+    public String getFormarray() {
+        return formarray;
+    }
+
+    public void setFormarray(String formarray) {
+        this.formarray = formarray;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -89,11 +100,10 @@ public class Contestform implements Serializable {
         return getClass().hashCode();
     }
 
-    // prettier-ignore
     @Override
     public String toString() {
-        return "Contestform{" +
-            "id=" + getId() +
-            "}";
+        return "Contestform [id=" + id + ", contest=" + contest + ", user=" + user + ", formarray=" + formarray + "]";
     }
+    // prettier-ignore
+
 }

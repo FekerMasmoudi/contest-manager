@@ -13,6 +13,11 @@ import { CreateComponent } from './contestformdraggable/listfields/create.compon
 import { InputtextComponent } from './contestformdraggable/listfields/inputtext/inputtext/inputtext.component';
 import { DatepickerComponent } from './contestformdraggable/listfields/datepicker/datepicker/datepicker.component';
 import { CheckboxComponent } from './contestformdraggable/listfields/checkbox/checkbox/checkbox.component';
+import { EmailinputComponent } from './contestformdraggable/listfields/emailinput/emailinput/emailinput.component';
+
+import { PasswordinputComponent } from './contestformdraggable/listfields/passwordinput/passwordinput/passwordinput.component';
+import { InputtextareaComponent } from './contestformdraggable/listfields/inputtextarea/inputtextarea/inputtextarea.component';
+import { InputphoneComponent } from './contestformdraggable/listfields/inputphone/inputphone/inputphone.component';
 
 @NgModule({
   imports: [SharedModule, ContestformRoutingModule, FormsModule],
@@ -27,6 +32,10 @@ import { CheckboxComponent } from './contestformdraggable/listfields/checkbox/ch
     CreateComponent,
     DatepickerComponent,
     CheckboxComponent,
+    EmailinputComponent,
+    PasswordinputComponent,
+    InputtextareaComponent,
+    InputphoneComponent,
   ],
 })
 export class ContestformModule {}

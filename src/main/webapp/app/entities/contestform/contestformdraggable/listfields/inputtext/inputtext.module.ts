@@ -11,11 +11,22 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogoverviewComponent } from './dialogoverview/dialogoverview.component';
 import { DialogoverviewModule } from './dialogoverview/dialogoverview.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { FormsModule } from '@angular/forms';
 const MaterialComponents = [MatButtonModule, MatIconModule, MatButtonToggleModule, MatFormFieldModule];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MaterialComponents, SharedModule, DragDropModule, DialogoverviewModule, DialogoverviewComponent, BrowserModule],
+  imports: [
+    CommonModule,
+    MaterialComponents,
+    SharedModule,
+    DragDropModule,
+    FormsModule,
+    DialogoverviewModule,
+    DialogoverviewComponent,
+    BrowserModule,
+  ],
 
   exports: [MaterialComponents],
 })

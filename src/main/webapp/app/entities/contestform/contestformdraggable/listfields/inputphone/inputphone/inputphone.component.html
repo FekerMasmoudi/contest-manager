@@ -1,0 +1,17 @@
+<div class="container-test" cdkDrag (cdkDragMoved)="ondragended($event)" cdkDragBoundary=".example">
+  <form class="example-form mb-2">
+    <mat-icon (click)="deleteContestfieldLine()" aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon>
+    <mat-icon (click)="openDialog()" aria-hidden="false" aria-label="Example settings icon" fontIcon="settings"></mat-icon>
+
+    <br />
+
+    <mat-form-field id="{{ index }}" class="example-form-field">
+      <mat-label>{{ label }}</mat-label>
+      <input matInput type="tel" placeholder="{{ placeholder }}" />
+      <span class="flag-icon flag-icon-tn flag-icon-squared" style="margin-left: 20px" matSuffix></span>
+      <mat-icon matSuffix>phone</mat-icon>
+
+      <!-- <mat-hint>Include area code</mat-hint> -->
+    </mat-form-field>
+  </form>
+</div>

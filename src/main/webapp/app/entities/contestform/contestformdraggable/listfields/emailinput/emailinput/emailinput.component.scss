@@ -1,0 +1,127 @@
+mwlResizable {
+  box-sizing: border-box;
+}
+
+.rectangle {
+  position: relative;
+  top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 150px;
+  margin: auto;
+  border-radius: 30px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.resize-handle-top,
+.resize-handle-bottom {
+  position: absolute;
+  height: 5px;
+  cursor: row-resize;
+  width: 100%;
+}
+.resize-handle-top {
+  top: 0;
+}
+.resize-handle-bottom {
+  bottom: 0;
+}
+.resize-handle-left,
+.resize-handle-right {
+  position: absolute;
+  height: 100%;
+  cursor: col-resize;
+  width: 5px;
+}
+.resize-handle-left {
+  left: 0;
+}
+.resize-handle-right {
+  right: 0;
+}
+.resizable {
+  position: relative;
+}
+.resizer {
+  /* All resizers are positioned absolutely inside the element */
+  position: absolute;
+}
+
+/* Placed at the right side */
+.resizer-r {
+  cursor: col-resize;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 5px;
+}
+
+/* Placed at the bottom side */
+.resizer-b {
+  bottom: 0;
+  cursor: row-resize;
+  height: 5px;
+  left: 0;
+  width: 100%;
+}
+mwlResizable {
+  box-sizing: border-box;
+}
+
+.rectangle {
+  position: relative;
+  top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 150px;
+  margin: auto;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: red;
+}
+.resize-handle-top,
+.resize-handle-bottom {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  background-color: white;
+  cursor: row-resize;
+}
+.resize-handle-top {
+  top: 0;
+}
+.resize-handle-bottom {
+  bottom: 0;
+}
+.resize-handle-left,
+.resize-handle-right {
+  position: absolute;
+  height: 100%;
+  cursor: col-resize;
+  width: 5px;
+}
+.resize-handle-left {
+  left: 0;
+}
+.resize-handle-right {
+  right: 0;
+}
+
+.wrapper {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+}
+.container-test {
+  width: 200px;
+  height: auto;
+  position: relative;
+}
+.container-test form {
+  position: absolute;
+}

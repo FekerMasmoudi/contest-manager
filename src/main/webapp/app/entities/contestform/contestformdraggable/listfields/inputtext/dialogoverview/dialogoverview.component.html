@@ -1,60 +1,70 @@
-<!-- ***** Modified by Mohamed **** -->
-<h1 mat-dialog-title>{{ data.name }}</h1>
-<div mat-dialog-content>
-  <p>تحييـن إعـددات الحقـل</p>
+<!-- ***** Modified by Mohamed **** 
+<h1 mat-dialog-title>{{ data.name }}</h1> -->
+<div class="mat-dialog">
+  <mat-dialog-content>
+    <p>تحييـن إعـددات الحقـل</p>
 
-  <mat-form-field>
-    <mat-label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.contestfield" for="field_contest"
-      >حقـول المنــاظرة</mat-label
-    >
-    <mat-select>
-      <mat-option [value]="null" selected>-- الرّجـاء إختيـار المنــاظرة --</mat-option>
-      <mat-option *ngFor="let c of test">
-        {{ c.cname }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label class="form-label" jhiTranslate="contestmanagerdbApp.contestform.contestfield" for="field_contest"
+        >حقـول المنــاظرة</mat-label
+      >
+      <mat-select [(ngModel)]="data.contestfieldinput" (ngModelChange)="onChange($event)">
+        <mat-option [value]="null" selected>-- الرّجـاء إختيـار المنــاظرة --</mat-option>
+        <mat-option *ngFor="let c of test" [value]="c.id">
+          {{ c.cname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field hidden>
-    <mat-label>Code</mat-label>
-    <input matInput [(ngModel)]="data.code" />
-  </mat-form-field>
+    <mat-form-field hidden>
+      <mat-label>Code</mat-label>
+      <input matInput [(ngModel)]="data.code" />
+    </mat-form-field>
 
-  <mat-form-field>
+    <!-- <mat-form-field>
     <mat-label>إسـم الحقل</mat-label>
-    <input matInput [(ngModel)]="data.name" />
-  </mat-form-field>
-  <br />
+    <input matInput [(ngModel)]="data.placeholder" />
+  </mat-form-field> -->
 
-  <mat-form-field>
-    <mat-label>النـص البديـل</mat-label>
-    <input matInput [(ngModel)]="data.name" />
-  </mat-form-field>
+    <br />
 
-  <mat-form-field>
-    <mat-label>عـرض الحقل</mat-label>
-    <input matInput [(ngModel)]="data.name" />
-  </mat-form-field>
-  <br />
+    <mat-form-field>
+      <mat-label>إسـم الحقـل</mat-label>
+      <input matInput [(ngModel)]="data.name" placeholder="" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>إرتفـاع الحقل</mat-label>
-    <input matInput [(ngModel)]="data.name" />
-  </mat-form-field>
+    <br />
 
-  <mat-form-field>
-    <mat-label>هـامش الحقل</mat-label>
-    <input matInput [(ngModel)]="data.name" />
-  </mat-form-field>
-  <br />
+    <mat-form-field>
+      <mat-label>بيـان الحقـل</mat-label>
+      <input matInput [(ngModel)]="data.label" placeholder="" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>الهـامش الداخلـي للحقـل</mat-label>
-    <input matInput [(ngModel)]="data.name" />
-  </mat-form-field>
-  <!--{{test[0].cname}}-->
+    <br />
+
+    <mat-form-field>
+      <mat-label>النـص البديـل</mat-label>
+      <input matInput [(ngModel)]="data.placeholder" placeholder="" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+      <mat-label>عـرض الحقل</mat-label>
+      <input matInput [(ngModel)]="domwidth" placeholder="" (ngModelChange)="onChange1($event)" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+      <mat-label>طــول الحقل</mat-label>
+      <input matInput [(ngModel)]="domheight" placeholder="" (ngModelChange)="onChange1($event)" />
+    </mat-form-field>
+
+    <!--{{test[0].cname}}-->
+  </mat-dialog-content>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">إلغـاء</button>
-  <button mat-button [mat-dialog-close]="data.type" cdkFocusInitial>حفـظ</button>
+  <button mat-raised-button color="warn" (click)="onNoClick()">إلغـاء</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>حفـظ</button>
 </div>

@@ -41,7 +41,8 @@
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
-              "node_modules/angular2-draggable/css/resizable.min.css"
+              "node_modules/angular2-draggable/css/resizable.min.css",
+              "node_modules/flag-icon-css/css/flag-icons.min.css"
             ],
             "scripts": ["src/main/webapp/content/js/test.js"]
           },

@@ -1,8 +1,11 @@
 package tn.soretras.contestmanager.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,6 +18,7 @@ import tn.soretras.contestmanager.repository.ContestformRepository;
 import tn.soretras.contestmanager.service.dto.ContestDTO;
 import tn.soretras.contestmanager.service.dto.ContestannounceDTO;
 import tn.soretras.contestmanager.service.dto.ContestformDTO;
+import tn.soretras.contestmanager.service.dto.GeneralrulesDTO;
 import tn.soretras.contestmanager.service.dto.GradeDTO;
 import tn.soretras.contestmanager.service.dto.SectorDTO;
 import tn.soretras.contestmanager.service.dto.SpecialityDTO;

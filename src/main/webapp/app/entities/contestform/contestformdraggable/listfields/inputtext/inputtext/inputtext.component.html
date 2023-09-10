@@ -1,11 +1,13 @@
-<form class="example-form mb-2" cdkDrag (cdkDragEnded)="ondragended($event)">
-  <mat-icon (click)="deleteContestfieldLine()" aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon>
-  <mat-icon (click)="openDialog($event)" aria-hidden="false" aria-label="Example settings icon" fontIcon="settings"></mat-icon>
+<div class="container-test" cdkDrag (cdkDragMoved)="ondragended($event)" cdkDragBoundary=".example">
+  <form class="example-form mb-2" (ngModelChange)="constraints()">
+    <mat-icon (click)="deleteContestfieldLine()" aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon>
+    <mat-icon (click)="openDialog()" aria-hidden="false" aria-label="Example settings icon" fontIcon="settings"></mat-icon>
 
-  <br />
+    <br />
 
-  <mat-form-field class="example-form-field">
-    <mat-label jhiTranslate="contestmanagerdbApp.contest.parent">Name</mat-label>
-    <input matInput type="text" placeholder="Name" />
-  </mat-form-field>
-</form>
+    <mat-form-field id="{{ index }}" class="example-form-field">
+      <mat-label>{{ label }}</mat-label>
+      <input matInput name="{{ name }}" id="test" type="text" placeholder="{{ placeholder }}" />
+    </mat-form-field>
+  </form>
+</div>

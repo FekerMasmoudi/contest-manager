@@ -1,10 +1,12 @@
-<form class="example-form mb-2" cdkDrag (cdkDragEnded)="ondragended($event)">
-  <mat-icon (click)="deleteContestfieldLine()" aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon>
-  <mat-icon (click)="openDialog($event)" aria-hidden="false" aria-label="Example settings icon" fontIcon="settings"></mat-icon>
+<div class="container-test" cdkDrag (cdkDragMoved)="ondragended($event)" cdkDragBoundary=".example">
+  <form class="example-form mb-2">
+    <mat-icon (click)="deleteContestfieldLine()" aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon>
+    <mat-icon (click)="openDialog($event)" aria-hidden="false" aria-label="Example settings icon" fontIcon="settings"></mat-icon>
 
-  <br />
+    <br />
 
-  <section class="example-section">
-    <mat-checkbox class="example-margin" color="primary">ذكـــر</mat-checkbox>
-  </section>
-</form>
+    <section id="{{ index }}" class="example-section">
+      <mat-checkbox class="example-margin" color="primary">{{ label }}</mat-checkbox>
+    </section>
+  </form>
+</div>

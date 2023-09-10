@@ -1,0 +1,9 @@
+<!-- ***** Modified by Mohamed **** 
+<h1 mat-dialog-title>{{ data.name }}</h1> -->
+<div class="mat-dialog">
+  <form [innerHTML]="showInnerHtml(dialogSafe)"></form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">إلغـاء</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>حفـظ</button>
+</div>

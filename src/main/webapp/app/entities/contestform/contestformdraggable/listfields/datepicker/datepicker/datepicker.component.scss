@@ -44,3 +44,11 @@
   border-style: hidden;
   border: 1px hidden;
 }
+.container-test {
+  width: 200px;
+  height: auto;
+  position: relative;
+}
+.container-test form {
+  position: absolute;
+}
